@@ -1,0 +1,527 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	font-family: '微软雅黑';
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+.standard-button{
+	border:0;
+	display:inline-block;
+	width: 100px;
+	height: 30px;
+	line-height:30px;
+	/**background-color: #1763b0 */;
+	background-color: #00b471;
+	color: white;
+	/**font-weight:bold;*/
+	cursor: pointer;
+	text-decoration:none;
+	text-align: center;
+}
+
+.standard-disable-button{
+	border:0;
+	display:inline-block;
+	width: 100px;
+	height: 30px;
+	line-height:30px;
+	background-color: #A2A6AA;
+	color: white;
+	font-weight:bold;
+	cursor: pointer;
+	text-decoration:none;
+}
+.biaodan-content {
+	clear: both;
+	margin-bottom: 10px;
+	background: #f7f7f9;
+}
+
+.biaodan-content td {
+	height: 30px;
+	color: #505052;
+}
+
+select {
+	height: 30px;
+	width: 80px;
+	background: #ededef;
+	border: 1px solid #cbcbcd;
+	color: #666;
+	font-size: 19px \9;
+}
+
+.biaodan-content input {
+	height: 30px;
+	line-height:28px;
+	width: 85%;
+	background: #fff;
+	border: 1px solid #6db9dd;
+	color: #666;
+	font-size: 14px;
+}
+.biaodan-content1 {
+	clear: both;
+	margin-bottom: 10px;
+	border: 1px solid #ccccce;
+	background: #f7f7f9;
+}
+
+
+.biaodan-content1 td {
+	height: 30px;
+	color: #505052;
+}
+
+.biaodan-content1 input {
+	height: 30px;
+	width: 100%;
+	line-height:28px;
+	background: #ededef;
+	border: 1px solid #cbcbcd;
+	color: #666;
+	font-size: 14px;
+}
+
+.biaodan-content-nav {
+	width: 100%;
+	background: #00b471 url(../images/biao-shouqi-a.png)
+		right no-repeat;
+	color: #fff;
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.biaodan-content-nav-active {
+	width: 100%;
+	background: #00b471 url(../images/biao-shouqi-b.png)
+		right no-repeat;
+	color: #fff;
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.nav-span-left {
+	padding-left: 20px;
+	float: left;
+}
+
+.nav-span-right {
+	padding-right: 20px;
+	float: right;
+}
+
+img {
+	vertical-align: middle;
+}
+
+.biao-button {
+	text-align: right;
+	padding-right: 10px;
+	padding-top: 15px;
+}
+
+.biaodan-content-content {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.biaodan-content-List {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.biaodan-content-List span{
+	color: #000;
+}
+
+.biaodan-content-content textarea {
+	width: 100%;
+	height: 60px;
+	line-height: 20px;
+	resize: none;
+	border: 1px solid #6db9dd;
+}
+
+.caiwu {
+	width: 90%;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	height: 60px;
+	line-height: 60px;
+}
+
+.next {
+	text-align: right;
+}
+
+.biaodan-content-content span {
+	color: red;
+}
+
+.login-bg {
+     margin:0;
+     background:url(../images/bg.jpg) top repeat-x;
+}
+
+.co{ color:red;}
+.button1 {
+	background:url(../images/button1.png);
+    width:208px;
+    height:40px;
+	float:left;
+	cursor:pointer;
+}
+.button1:hover{
+	background:url(../images/button11.png);
+}
+.button2 {
+	background:url(../images/button2.png);
+    width:104px;
+    height:40px;
+    float:left;
+	cursor:pointer;
+}
+.button2:hover{
+	background:url(../images/button22.png);
+}
+
+.login-bg1 {
+    width:900px;
+    height:503px;
+    background:url(../images/login-bg1.png); 
+    position:absolute;
+    top:50%;
+    left:50%; 
+    margin-left:-450px; 
+    margin-top:-251px;
+}
+
+.login {
+     width:336px;
+     height:240px;
+     background:url(../images/login.png);
+     margin:0 auto;
+     position:relative;
+     top:70px;
+}
+
+.body_index{
+	font-family:'微软雅黑';
+	margin:0;
+	padding:0;
+	font-size:14px;
+	color:#31363a;
+	background:url(../images/bg.png) repeat-x;
+	min-width:1130px;
+	}
+img{
+	border:0;
+	}
+.header{
+	width:100%;
+	min-width:1100px;
+	margin:0 auto;
+	height:50px;
+	background:#00b471;
+	}
+.main{
+	width:100%;
+	min-width:1100px;
+	margin:0 auto;
+	clear:both;
+	background:#f3f3f3;
+	}
+.main-left{
+	width:250px;
+	float:left;
+	background:#eaeaea;
+	}
+.main-right{
+	min-width:830px;
+	background:#fff;
+	}
+.main-right1{
+	margin-left:250px;
+	min-width:830px;
+	position:relative;
+	background:#fff;
+	}
+.footer{
+	width:100%;
+	margin:0 auto;
+	min-width:1100px;
+	height:24px;
+	clear:both;
+	text-align:center;
+	line-height:24px;
+	color:#fff;
+	background:#00b471;
+	}
+.header-left{
+	float:left;
+	width:110px;
+	height:50px;
+	
+	}
+.header-nav{
+	width:360px;
+	height:50px;
+	float:left;	
+	overflow-y:auto;
+}
+.header-center{
+	list-style-type:none;	
+	margin:0;
+	padding:0;
+	display:block;
+	white-space:nowrap;
+	width:100%;
+	overflow:auto;
+	overflow-x:hidden;
+	overflow-x:hidden;
+	}
+.header-center-left{
+	float:left;
+	width:50px;
+	height:70px;
+	margin-top:26px;
+	margin-right:20px;
+	}
+.header-center-right{
+	float:left;
+	width:50px;
+	height:70px;
+	margin-top:26px;
+	margin-left:20px;
+	}
+.header-right{
+	float:right;
+	width:200px;
+	height:50px;
+	}
+.nav{
+	float:right;
+	}
+.nav a{
+	width:100px;
+	height:100px;
+	}
+.nav img{
+	height:40px;
+	vertical-align:middle;
+	}
+.button-active{
+	background:url(../images/button-bg.png) right;
+	height:46px;
+	line-height:46px;
+	color:#333;
+	font-size:15px;
+	font-weight:bold;
+	cursor:pointer;
+	display:block;
+	}
+.button-active img{
+	vertical-align:middle;
+	padding-left:15px;
+	padding-right:5px;
+	float:left;
+    }
+.button{
+	background:url(../images/button-bg1.png) right;
+	height:46px;
+	line-height:46px;
+	color:#333333;
+	font-size:15px;
+	font-weight:bold;
+	cursor:pointer;
+	display:block;
+	}
+.button img{
+	vertical-align:middle;
+	padding-left:15px;
+	padding-right:5px;
+	float:left;
+    }
+.nav-active{
+	border-bottom:1px solid #c3d1dc;
+	display:none;
+	}
+.erji-active{
+	height:46px;
+	font-size:14px;
+	color:#24a374;
+	cursor:pointer;
+	white-space:nowrap;
+	background: #fff url(../images/fawen3.png) left no-repeat;
+	}
+.erji{
+	height:46px;
+	font-size:14px;
+	color:#333;
+	cursor:pointer;
+	white-space:nowrap;
+	background:url(../images/fawen33.png) left no-repeat;
+	}
+.erji:hover{
+	height:46px;
+	font-size:14px;
+	color:#fff;
+	cursor:pointer;
+	white-space:nowrap;
+	background:#24a374 url(../images/fawen333.png) left no-repeat;
+	}
+.erji-active img{
+	vertical-align:middle;
+	padding-left:34px;
+	padding-right:5px;
+    }
+.erji img{
+	vertical-align:middle;
+	padding-left:34px;
+	padding-right:5px;
+    }
+.right-nav{
+	height:34px;
+	background:#e6f0f9;
+	border-bottom:1px solid #c3d1dc;
+	line-height:34px;
+	font-size:14px;
+	font-weight:bold;
+	padding-right:5px;
+	}
+.right-nav1{
+	height:32px;
+	background:#e6f0f9;
+	border-bottom:1px solid #c3d1dc;
+	line-height:32px;
+	font-size:14px;
+	font-weight:bold;
+	padding-left:16px;
+	padding-right:16px;
+	margin-left:5px;
+	}
+.right-main{
+	width:100%;
+	height:100%;
+	}
+.box{
+	overflow:hidden;
+	height:100%;
+	}
+.box-header{
+	height:35px;
+	background:#e6f0f9;
+	margin-left:5px;
+	border:1px solid #e4e5e7;
+	border-bottom:none;
+	}
+.b-left{
+	float:left;
+	height:35px;
+	color:#035891;
+	font-size:14px;
+	}
+.b-left img{
+	vertical-align:middle;
+    }
+.b-right{
+	float:right;
+	line-height:35px;
+	color:#035891;
+	font-size:14px;
+	padding-right:20px;
+	}
+.box-main{
+	margin-left:5px;
+	margin-right:5px;
+	margin-top:5px;
+	height:100%;
+	}
+table{
+  /*   border-collapse: collapse; */
+    border: none;
+    }
+.box-main td{
+	height:30px;
+	border-left:1px solid #e4e5e7;
+	border-right:1px solid #e4e5e7;
+	text-align:center;
+	}
+.box-main tr{
+	background:#fff;
+	}
+.biao{
+	color:#f00;
+	text-decoration:underline;
+	}
+.headernav-active{
+	height:50px;
+	background:#d5ebdf;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:50px;
+	text-align:center;
+	font-size:14px;
+	color:#229561;
+	display:inline-block;
+	list-style-type:none;
+	cursor:pointer;
+	}
+.headernav{
+	height:50px;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:50px;
+	text-align:center;
+	font-size:14px;
+	color:#fff;
+	display:inline-block;
+	list-style-type:none;
+	cursor:pointer;
+	}
+.main-center{
+	width:20px;
+	float:left;
+	}
+/** 文件上传按钮的样式美化 开始*/
+.a-upload{
+padding: 4px 10px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    cursor: pointer;
+    color: #444;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    text-decoration: none;
+}
+.a-upload  input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+.a-upload:hover {
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none;
+}
+/** 文件上传按钮的样式美化 结束*/
+	

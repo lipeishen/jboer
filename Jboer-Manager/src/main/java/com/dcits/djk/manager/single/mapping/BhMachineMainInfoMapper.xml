@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.djk.manager.single.mapper.BhMachineMainInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhMachineMainInfo" >
+    <id column="machine_id" property="machineId" jdbcType="CHAR" />
+    <result column="machine_type" property="machineType" jdbcType="CHAR" />
+    <result column="machine_name" property="machineName" jdbcType="VARCHAR" />
+    <result column="machine_code" property="machineCode" jdbcType="VARCHAR" />
+    <result column="machine_pic_url" property="machinePicUrl" jdbcType="VARCHAR" />
+    <result column="machine_price" property="machinePrice" jdbcType="DECIMAL" />
+    <result column="machine_stock_total" property="machineStockTotal" jdbcType="BIGINT" />
+    <result column="machine_stock_remain" property="machineStockRemain" jdbcType="BIGINT" />
+    <result column="machine_create_time" property="machineCreateTime" jdbcType="DATE" />
+    <result column="machine_issale" property="machineIssale" jdbcType="CHAR" />
+    <result column="machine_isvalid" property="machineIsvalid" jdbcType="CHAR" />
+    <result column="machine_mac" property="machineMac" jdbcType="CHAR" />
+    <result column="machine_hasvoice" property="machineHasvoice" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    machine_id, machine_type, machine_name, machine_code, machine_pic_url, machine_price, 
+    machine_stock_total, machine_stock_remain, machine_create_time, machine_issale, machine_isvalid, 
+    machine_mac, machine_hasvoice
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from bh_machine_main_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bh_machine_main_info
+    where machine_id = #{machineId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bh_machine_main_info
+    where machine_id = #{machineId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfoExample" >
+    delete from bh_machine_main_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfo" >
+    insert into bh_machine_main_info (machine_id, machine_type, machine_name, 
+      machine_code, machine_pic_url, machine_price, 
+      machine_stock_total, machine_stock_remain, machine_create_time, 
+      machine_issale, machine_isvalid, machine_mac, 
+      machine_hasvoice)
+    values (#{machineId,jdbcType=CHAR}, #{machineType,jdbcType=CHAR}, #{machineName,jdbcType=VARCHAR}, 
+      #{machineCode,jdbcType=VARCHAR}, #{machinePicUrl,jdbcType=VARCHAR}, #{machinePrice,jdbcType=DECIMAL}, 
+      #{machineStockTotal,jdbcType=BIGINT}, #{machineStockRemain,jdbcType=BIGINT}, #{machineCreateTime,jdbcType=DATE}, 
+      #{machineIssale,jdbcType=CHAR}, #{machineIsvalid,jdbcType=CHAR}, #{machineMac,jdbcType=CHAR}, 
+      #{machineHasvoice,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfo" >
+    insert into bh_machine_main_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="machineId != null" >
+        machine_id,
+      </if>
+      <if test="machineType != null" >
+        machine_type,
+      </if>
+      <if test="machineName != null" >
+        machine_name,
+      </if>
+      <if test="machineCode != null" >
+        machine_code,
+      </if>
+      <if test="machinePicUrl != null" >
+        machine_pic_url,
+      </if>
+      <if test="machinePrice != null" >
+        machine_price,
+      </if>
+      <if test="machineStockTotal != null" >
+        machine_stock_total,
+      </if>
+      <if test="machineStockRemain != null" >
+        machine_stock_remain,
+      </if>
+      <if test="machineCreateTime != null" >
+        machine_create_time,
+      </if>
+      <if test="machineIssale != null" >
+        machine_issale,
+      </if>
+      <if test="machineIsvalid != null" >
+        machine_isvalid,
+      </if>
+      <if test="machineMac != null" >
+        machine_mac,
+      </if>
+      <if test="machineHasvoice != null" >
+        machine_hasvoice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="machineId != null" >
+        #{machineId,jdbcType=CHAR},
+      </if>
+      <if test="machineType != null" >
+        #{machineType,jdbcType=CHAR},
+      </if>
+      <if test="machineName != null" >
+        #{machineName,jdbcType=VARCHAR},
+      </if>
+      <if test="machineCode != null" >
+        #{machineCode,jdbcType=VARCHAR},
+      </if>
+      <if test="machinePicUrl != null" >
+        #{machinePicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="machinePrice != null" >
+        #{machinePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="machineStockTotal != null" >
+        #{machineStockTotal,jdbcType=BIGINT},
+      </if>
+      <if test="machineStockRemain != null" >
+        #{machineStockRemain,jdbcType=BIGINT},
+      </if>
+      <if test="machineCreateTime != null" >
+        #{machineCreateTime,jdbcType=DATE},
+      </if>
+      <if test="machineIssale != null" >
+        #{machineIssale,jdbcType=CHAR},
+      </if>
+      <if test="machineIsvalid != null" >
+        #{machineIsvalid,jdbcType=CHAR},
+      </if>
+      <if test="machineMac != null" >
+        #{machineMac,jdbcType=CHAR},
+      </if>
+      <if test="machineHasvoice != null" >
+        #{machineHasvoice,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfoExample" resultType="java.lang.Integer" >
+    select count(*) from bh_machine_main_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bh_machine_main_info
+    <set >
+      <if test="record.machineId != null" >
+        machine_id = #{record.machineId,jdbcType=CHAR},
+      </if>
+      <if test="record.machineType != null" >
+        machine_type = #{record.machineType,jdbcType=CHAR},
+      </if>
+      <if test="record.machineName != null" >
+        machine_name = #{record.machineName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.machineCode != null" >
+        machine_code = #{record.machineCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.machinePicUrl != null" >
+        machine_pic_url = #{record.machinePicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.machinePrice != null" >
+        machine_price = #{record.machinePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.machineStockTotal != null" >
+        machine_stock_total = #{record.machineStockTotal,jdbcType=BIGINT},
+      </if>
+      <if test="record.machineStockRemain != null" >
+        machine_stock_remain = #{record.machineStockRemain,jdbcType=BIGINT},
+      </if>
+      <if test="record.machineCreateTime != null" >
+        machine_create_time = #{record.machineCreateTime,jdbcType=DATE},
+      </if>
+      <if test="record.machineIssale != null" >
+        machine_issale = #{record.machineIssale,jdbcType=CHAR},
+      </if>
+      <if test="record.machineIsvalid != null" >
+        machine_isvalid = #{record.machineIsvalid,jdbcType=CHAR},
+      </if>
+      <if test="record.machineMac != null" >
+        machine_mac = #{record.machineMac,jdbcType=CHAR},
+      </if>
+      <if test="record.machineHasvoice != null" >
+        machine_hasvoice = #{record.machineHasvoice,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bh_machine_main_info
+    set machine_id = #{record.machineId,jdbcType=CHAR},
+      machine_type = #{record.machineType,jdbcType=CHAR},
+      machine_name = #{record.machineName,jdbcType=VARCHAR},
+      machine_code = #{record.machineCode,jdbcType=VARCHAR},
+      machine_pic_url = #{record.machinePicUrl,jdbcType=VARCHAR},
+      machine_price = #{record.machinePrice,jdbcType=DECIMAL},
+      machine_stock_total = #{record.machineStockTotal,jdbcType=BIGINT},
+      machine_stock_remain = #{record.machineStockRemain,jdbcType=BIGINT},
+      machine_create_time = #{record.machineCreateTime,jdbcType=DATE},
+      machine_issale = #{record.machineIssale,jdbcType=CHAR},
+      machine_isvalid = #{record.machineIsvalid,jdbcType=CHAR},
+      machine_mac = #{record.machineMac,jdbcType=CHAR},
+      machine_hasvoice = #{record.machineHasvoice,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfo" >
+    update bh_machine_main_info
+    <set >
+      <if test="machineType != null" >
+        machine_type = #{machineType,jdbcType=CHAR},
+      </if>
+      <if test="machineName != null" >
+        machine_name = #{machineName,jdbcType=VARCHAR},
+      </if>
+      <if test="machineCode != null" >
+        machine_code = #{machineCode,jdbcType=VARCHAR},
+      </if>
+      <if test="machinePicUrl != null" >
+        machine_pic_url = #{machinePicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="machinePrice != null" >
+        machine_price = #{machinePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="machineStockTotal != null" >
+        machine_stock_total = #{machineStockTotal,jdbcType=BIGINT},
+      </if>
+      <if test="machineStockRemain != null" >
+        machine_stock_remain = #{machineStockRemain,jdbcType=BIGINT},
+      </if>
+      <if test="machineCreateTime != null" >
+        machine_create_time = #{machineCreateTime,jdbcType=DATE},
+      </if>
+      <if test="machineIssale != null" >
+        machine_issale = #{machineIssale,jdbcType=CHAR},
+      </if>
+      <if test="machineIsvalid != null" >
+        machine_isvalid = #{machineIsvalid,jdbcType=CHAR},
+      </if>
+      <if test="machineMac != null" >
+        machine_mac = #{machineMac,jdbcType=CHAR},
+      </if>
+      <if test="machineHasvoice != null" >
+        machine_hasvoice = #{machineHasvoice,jdbcType=CHAR},
+      </if>
+    </set>
+    where machine_id = #{machineId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfo" >
+    update bh_machine_main_info
+    set machine_type = #{machineType,jdbcType=CHAR},
+      machine_name = #{machineName,jdbcType=VARCHAR},
+      machine_code = #{machineCode,jdbcType=VARCHAR},
+      machine_pic_url = #{machinePicUrl,jdbcType=VARCHAR},
+      machine_price = #{machinePrice,jdbcType=DECIMAL},
+      machine_stock_total = #{machineStockTotal,jdbcType=BIGINT},
+      machine_stock_remain = #{machineStockRemain,jdbcType=BIGINT},
+      machine_create_time = #{machineCreateTime,jdbcType=DATE},
+      machine_issale = #{machineIssale,jdbcType=CHAR},
+      machine_isvalid = #{machineIsvalid,jdbcType=CHAR},
+      machine_mac = #{machineMac,jdbcType=CHAR},
+      machine_hasvoice = #{machineHasvoice,jdbcType=CHAR}
+    where machine_id = #{machineId,jdbcType=CHAR}
+  </update>
+</mapper>

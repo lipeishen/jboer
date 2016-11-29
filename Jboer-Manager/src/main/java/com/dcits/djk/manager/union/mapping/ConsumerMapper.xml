@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.djk.manager.union.mapper.ConsumerMapper" >
+   <sql id="Base_Column_List" >
+    user_id, surname, name, identification_type, identification_num, mobile_phone, tel_area_code, 
+    tel_number, tel_tran_code, addr_province, addr_city, addr_county, addr_area, addr_detail, 
+    email, sex, birthday, create_date, modify_date, head_portrait
+  </sql>
+ <select id="getCountConsumerListByCaseOnPage" resultType="java.lang.Integer">
+   SELECT  COUNT(1) from bh_auth_user_main t 
+    where 1=1
+      <if test="surname!=null and surname!= ''">
+			and  surname like #{surname,jdbcType=VARCHAR}
+	  </if>
+	  <if test="name!=null and name!= ''">
+			and  name like #{name,jdbcType=VARCHAR}
+	  </if>
+	  <if test="mobphone!=null and mobphone!= ''">
+			and  mobile_phone like #{mobphone,jdbcType=VARCHAR}
+	  </if>
+ 
+ </select>
+ 
+ <select id="getConsumerListByCaseOnPage" resultType="java.util.HashMap">
+    SELECT t.surname, t.name, t.identification_type, t.identification_num, t.mobile_phone, t.tel_area_code, 
+    t.tel_number, t.tel_tran_code, t.addr_province, t.addr_city, t.addr_county, t.addr_area, t.addr_detail, 
+    t.email, t.sex, t.birthday, t.create_date, t.modify_date, t.head_portrait ,t1.province_name,t2.city_name,
+    t3.country_name from bh_auth_user_main t 
+	LEFT JOIN bh_sys_dict_province t1 on t.addr_province=t1.province_code
+	LEFT JOIN bh_sys_dict_city t2 ON t.addr_city=t2.city_code
+	LEFT JOIN bh_sys_dict_country t3 on t.addr_county =t3.country_code
+	where 1=1
+      <if test="surname!=null and surname!= ''">
+			and  surname like #{surname,jdbcType=VARCHAR}
+	  </if>
+	  <if test="name!=null and name!= ''">
+			and  name like #{name,jdbcType=VARCHAR}
+	  </if>
+	  <if test="mobphone!=null and mobphone!= ''">
+			and  mobile_phone like #{mobphone,jdbcType=VARCHAR}
+	  </if>
+	  order by t.create_date
+    limit #{page},#{rows}
+ </select>
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.djk.manager.union.mapper.MonitorServiceMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhMonitorTestTemp" >
+    <id column="service_node_id" property="serviceNodeId" jdbcType="CHAR" />
+    <result column="service_url" property="serviceUrl" jdbcType="VARCHAR" />
+    <result column="service_name" property="serviceName" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+ 
+   <sql id="Base_Column_List" >
+    service_node_id, service_url, service_name, update_time
+  </sql>
+  
+   <select id="getCountMonitorListByCaseOnPage" resultType="java.lang.Integer" >
+    select count(*)
+    from bh_monitor_test_temp
+    where 1=1
+    <if test="serviceName!=null and serviceName!= ''">
+			and  service_name like #{serviceName,jdbcType=CHAR}
+	</if>
+  </select>
+  <select id="getMonitorListByCaseOnPage" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from bh_monitor_test_temp
+    where 1=1
+    <if test="serviceName!=null and serviceName!= ''">
+		and  service_name like #{serviceName,jdbcType=CHAR}
+	</if>
+    order by update_time
+    limit #{page},#{rows}
+  </select>
+  
+</mapper>

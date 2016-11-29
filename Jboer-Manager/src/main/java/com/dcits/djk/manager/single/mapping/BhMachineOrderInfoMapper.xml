@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.djk.manager.single.mapper.BhMachineOrderInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhMachineOrderInfo" >
+    <id column="machine_order_id" property="machineOrderId" jdbcType="CHAR" />
+    <result column="machine_order_type" property="machineOrderType" jdbcType="CHAR" />
+    <result column="machine_order_num" property="machineOrderNum" jdbcType="CHAR" />
+    <result column="machine_id" property="machineId" jdbcType="CHAR" />
+    <result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="machine_order_create_time" property="machineOrderCreateTime" jdbcType="TIMESTAMP" />
+    <result column="machine_order_quantity" property="machineOrderQuantity" jdbcType="BIGINT" />
+    <result column="machine_order_amount" property="machineOrderAmount" jdbcType="DECIMAL" />
+    <result column="machine_order_status" property="machineOrderStatus" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    machine_order_id, machine_order_type, machine_order_num, machine_id, user_id, machine_order_create_time, 
+    machine_order_quantity, machine_order_amount, machine_order_status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from bh_machine_order_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bh_machine_order_info
+    where machine_order_id = #{machineOrderId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bh_machine_order_info
+    where machine_order_id = #{machineOrderId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfoExample" >
+    delete from bh_machine_order_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfo" >
+    insert into bh_machine_order_info (machine_order_id, machine_order_type, machine_order_num, 
+      machine_id, user_id, machine_order_create_time, 
+      machine_order_quantity, machine_order_amount, 
+      machine_order_status)
+    values (#{machineOrderId,jdbcType=CHAR}, #{machineOrderType,jdbcType=CHAR}, #{machineOrderNum,jdbcType=CHAR}, 
+      #{machineId,jdbcType=CHAR}, #{userId,jdbcType=CHAR}, #{machineOrderCreateTime,jdbcType=TIMESTAMP}, 
+      #{machineOrderQuantity,jdbcType=BIGINT}, #{machineOrderAmount,jdbcType=DECIMAL}, 
+      #{machineOrderStatus,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfo" >
+    insert into bh_machine_order_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="machineOrderId != null" >
+        machine_order_id,
+      </if>
+      <if test="machineOrderType != null" >
+        machine_order_type,
+      </if>
+      <if test="machineOrderNum != null" >
+        machine_order_num,
+      </if>
+      <if test="machineId != null" >
+        machine_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="machineOrderCreateTime != null" >
+        machine_order_create_time,
+      </if>
+      <if test="machineOrderQuantity != null" >
+        machine_order_quantity,
+      </if>
+      <if test="machineOrderAmount != null" >
+        machine_order_amount,
+      </if>
+      <if test="machineOrderStatus != null" >
+        machine_order_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="machineOrderId != null" >
+        #{machineOrderId,jdbcType=CHAR},
+      </if>
+      <if test="machineOrderType != null" >
+        #{machineOrderType,jdbcType=CHAR},
+      </if>
+      <if test="machineOrderNum != null" >
+        #{machineOrderNum,jdbcType=CHAR},
+      </if>
+      <if test="machineId != null" >
+        #{machineId,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="machineOrderCreateTime != null" >
+        #{machineOrderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="machineOrderQuantity != null" >
+        #{machineOrderQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="machineOrderAmount != null" >
+        #{machineOrderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="machineOrderStatus != null" >
+        #{machineOrderStatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfoExample" resultType="java.lang.Integer" >
+    select count(*) from bh_machine_order_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bh_machine_order_info
+    <set >
+      <if test="record.machineOrderId != null" >
+        machine_order_id = #{record.machineOrderId,jdbcType=CHAR},
+      </if>
+      <if test="record.machineOrderType != null" >
+        machine_order_type = #{record.machineOrderType,jdbcType=CHAR},
+      </if>
+      <if test="record.machineOrderNum != null" >
+        machine_order_num = #{record.machineOrderNum,jdbcType=CHAR},
+      </if>
+      <if test="record.machineId != null" >
+        machine_id = #{record.machineId,jdbcType=CHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=CHAR},
+      </if>
+      <if test="record.machineOrderCreateTime != null" >
+        machine_order_create_time = #{record.machineOrderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.machineOrderQuantity != null" >
+        machine_order_quantity = #{record.machineOrderQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="record.machineOrderAmount != null" >
+        machine_order_amount = #{record.machineOrderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.machineOrderStatus != null" >
+        machine_order_status = #{record.machineOrderStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bh_machine_order_info
+    set machine_order_id = #{record.machineOrderId,jdbcType=CHAR},
+      machine_order_type = #{record.machineOrderType,jdbcType=CHAR},
+      machine_order_num = #{record.machineOrderNum,jdbcType=CHAR},
+      machine_id = #{record.machineId,jdbcType=CHAR},
+      user_id = #{record.userId,jdbcType=CHAR},
+      machine_order_create_time = #{record.machineOrderCreateTime,jdbcType=TIMESTAMP},
+      machine_order_quantity = #{record.machineOrderQuantity,jdbcType=BIGINT},
+      machine_order_amount = #{record.machineOrderAmount,jdbcType=DECIMAL},
+      machine_order_status = #{record.machineOrderStatus,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfo" >
+    update bh_machine_order_info
+    <set >
+      <if test="machineOrderType != null" >
+        machine_order_type = #{machineOrderType,jdbcType=CHAR},
+      </if>
+      <if test="machineOrderNum != null" >
+        machine_order_num = #{machineOrderNum,jdbcType=CHAR},
+      </if>
+      <if test="machineId != null" >
+        machine_id = #{machineId,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="machineOrderCreateTime != null" >
+        machine_order_create_time = #{machineOrderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="machineOrderQuantity != null" >
+        machine_order_quantity = #{machineOrderQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="machineOrderAmount != null" >
+        machine_order_amount = #{machineOrderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="machineOrderStatus != null" >
+        machine_order_status = #{machineOrderStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where machine_order_id = #{machineOrderId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfo" >
+    update bh_machine_order_info
+    set machine_order_type = #{machineOrderType,jdbcType=CHAR},
+      machine_order_num = #{machineOrderNum,jdbcType=CHAR},
+      machine_id = #{machineId,jdbcType=CHAR},
+      user_id = #{userId,jdbcType=CHAR},
+      machine_order_create_time = #{machineOrderCreateTime,jdbcType=TIMESTAMP},
+      machine_order_quantity = #{machineOrderQuantity,jdbcType=BIGINT},
+      machine_order_amount = #{machineOrderAmount,jdbcType=DECIMAL},
+      machine_order_status = #{machineOrderStatus,jdbcType=CHAR}
+    where machine_order_id = #{machineOrderId,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.djk.manager.union.mapper.UserSystemMapper">
+	<resultMap id="ModularResultMap"
+		type="com.dcits.djk.manager.single.model.BhSysUserModularInfo">
+		<id column="modular_id" property="modularId" jdbcType="CHAR" />
+		<result column="modular_name" property="modularName" jdbcType="VARCHAR" />
+		<result column="modular_parent_id" property="modularParentId"
+			jdbcType="CHAR" />
+		<result column="modular_code" property="modularCode" jdbcType="VARCHAR" />
+		<result column="modular_url" property="modularUrl" jdbcType="VARCHAR" />
+		<result column="comments" property="comments" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+	<select id="getCountUserListByCaseOnPage" resultType="java.lang.Integer">
+		select count(1) from bh_sys_user_login_info
+		where user_id in(select user_id from bh_sys_user_org_rel where org_id in
+		<foreach item="item" index="index" collection="orgIds" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+		)
+		<if test="name !=null and name != ''">
+			and name like
+			#{name,jdbcType=VARCHAR}
+		</if>
+		<if test="loginName !=null and loginName != ''">
+			and login_name like
+			#{loginName,jdbcType=VARCHAR}
+		</if>
+		<if test="staffNum !=null and staffNum != ''">
+			and staff_num like
+			#{staffNum,jdbcType=VARCHAR}
+		</if>
+	</select>
+
+	<select id="getUserListByCaseOnPage" resultType="java.util.HashMap">
+		select * from bh_sys_user_login_info
+		where user_id in(select user_id from bh_sys_user_org_rel where org_id in
+		<foreach item="item" index="index" collection="orgIds" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+		)
+		<if test="name !=null and name != ''">
+			and name like
+			#{name,jdbcType=VARCHAR}
+		</if>
+		<if test="loginName !=null and loginName != ''">
+			and login_name like
+			#{loginName,jdbcType=VARCHAR}
+		</if>
+		<if test="staffNum !=null and staffNum != ''">
+			and staff_num like
+			#{staffNum,jdbcType=VARCHAR}
+		</if>
+		 order by staff_num 
+		limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+	</select>
+
+	<select id="getCountRoleListByCaseOnPage" resultType="java.lang.Integer">
+		select count(1) from bh_sys_user_role_info
+		where 1=1
+		<if test="roleName !=null and roleName != ''">
+			and role_name like
+			#{roleName,jdbcType=VARCHAR}
+		</if>
+	</select>
+
+	<resultMap id="RoleInfoResultMap"
+		type="com.dcits.djk.manager.single.model.BhSysUserRoleInfo">
+		<id column="role_id" property="roleId" jdbcType="CHAR" />
+		<result column="role_name" property="roleName" jdbcType="VARCHAR" />
+		<result column="comments" property="comments" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getRoleListByCaseOnPage" resultMap="RoleInfoResultMap">
+		select * from bh_sys_user_role_info
+		where 1=1
+		<if test="roleName !=null and roleName != ''">
+			and role_name like
+			#{roleName,jdbcType=VARCHAR}
+		</if>
+		limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+	</select>
+	<!-- lips  begin -->
+	<resultMap id="PostInfoResultMap"
+		type="com.dcits.djk.manager.single.model.BhSysUserPostInfo">
+		<id column="post_id" property="postId" jdbcType="CHAR" />
+		<result column="post_name" property="postName" jdbcType="VARCHAR" />
+		<result column="comments" property="comments" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="PostRoleBaseResultMap" type="com.dcits.djk.manager.vo.PostRoleDataLevel" >
+    <result column="post_id" property="postId" jdbcType="CHAR" />
+    <result column="post_name" property="postName" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="CHAR" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="date_level" property="dateLevel" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="PRBaseResultMap" type="com.dcits.djk.manager.single.model.BhSysUserPostRole" >
+    <id column="post_role_id" property="postRoleId" jdbcType="CHAR" />
+    <result column="post_id" property="postId" jdbcType="CHAR" />
+    <result column="role_id" property="roleId" jdbcType="CHAR" />
+    <result column="date_level" property="dateLevel" jdbcType="CHAR" />
+  </resultMap>
+	<select id="getCountPostListByCaseOnPage" resultType="java.lang.Integer">
+		select count(1) from bh_sys_user_post_info
+		where 1=1
+		<if test="postName !=null and postName != ''">
+			and post_name like
+			#{postName,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="getPostListByCaseOnPage" resultMap="PostInfoResultMap">
+		select * from bh_sys_user_post_info
+		where 1=1
+		<if test="postName !=null and postName != ''">
+			and post_name like
+			#{postName,jdbcType=VARCHAR}
+		</if>
+		limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+	</select>
+	  <select id="getRoles" resultType="java.util.HashMap">
+			select * from bh_sys_user_role_info order by role_name
+	  </select>
+	  <select id="getPostRoleByPostId" resultMap="PostRoleBaseResultMap">
+	   SELECT  t1.role_name ,t.date_level,t.role_id 
+	   from bh_sys_user_post_role t, bh_sys_user_role_info t1
+	    WHERE   t.role_id=t1.role_id and t.post_id= #{postid,jdbcType=CHAR}
+	  </select>
+	  <update id="updateByPostId" parameterType="map" >
+	     update bh_sys_user_post_role
+      <set >
+      <if test="roleid!= null" >
+        role_id = #{roleid,jdbcType=CHAR},
+      </if>
+      <if test="datalev != null" >
+        date_level = #{datalev,jdbcType=CHAR},
+      </if>
+     </set>
+	  where post_id=#{postId,jdbcType=CHAR}
+	  </update>
+	  <select id="getPostRoleByCon" parameterType="map" resultMap="PRBaseResultMap">
+	     select *  from bh_sys_user_post_role a 
+	     where a.post_id = #{postId,jdbcType=CHAR}
+         and a.role_id=#{roleid,jdbcType=CHAR}
+	  </select>
+	  <delete id="deletePostRoleByPostId" parameterType="java.lang.String">
+	    delete from bh_sys_user_post_role
+	    where post_id = #{postId,jdbcType=CHAR};
+	  </delete>
+	  <!-- lips  end -->
+	<!-- cuiwt -->
+	<select id="selectAll" resultMap="ModularResultMap">
+		select *
+		from bh_sys_user_modular_info
+		order by modular_code
+	</select>
+	<select id="getModularByParentId" resultType="java.lang.Integer"
+		parameterType="java.lang.String">
+		select count(*) from bh_sys_user_modular_info
+		where 1=1
+		<if test="modularParentId !=null and modularParentId != ''">
+			and modular_parent_id = #{modularParentId,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="getRoleModularById" resultType="java.lang.Integer"
+		parameterType="java.lang.String">
+		select count(*) from bh_sys_user_role_modular
+		where 1=1
+		<if test="id !=null and id != ''">
+			and modular_id =
+			#{id,jdbcType=VARCHAR}
+		</if>
+	</select>
+	
+	<select id="getHaveModulars" resultType="java.lang.String">
+		select t2.modular_id from bh_sys_user_role_modular t2 where t2.modular_id in (select t1.modular_id from bh_sys_user_modular_info t1 where t1.modular_id not in(select t.modular_parent_id from bh_sys_user_modular_info t)) and t2.role_id = #{roleId,jdbcType=VARCHAR}
+	</select>
+	
+	<delete id="deleteByRoleId" parameterType="java.lang.String" >
+	   delete from bh_sys_user_role_modular
+	   where role_id = #{id,jdbcType=CHAR}
+	 </delete>
+	
+	<select id="getCountPostRole" resultType="java.lang.Integer">
+		select count(1) from bh_sys_user_post_role t where t.role_id = #{id,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getModularListByCaseOnPage" resultMap="ModularResultMap">
+		select * from bh_sys_user_modular_info
+		where 1=1
+		<if test="name !=null and name != ''">
+			and modular_name like #{name,jdbcType=VARCHAR}
+		</if>
+		<if test="modularId !=null and modularId != ''">
+			and modular_parent_id = #{modularId,jdbcType=VARCHAR}
+		</if>
+		<if test="modularCode !=null and modularCode != ''">
+			and modular_code like #{modularCode,jdbcType=VARCHAR}
+		</if>
+		order by modular_code
+		limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+	</select>
+	<select id="getCountModularListByCaseOnPage" resultType="java.lang.Integer">
+		select count(*) from bh_sys_user_modular_info
+		where 1=1
+		<if test="name !=null and name != ''">
+			and modular_name like
+			#{name,jdbcType=VARCHAR}
+		</if>
+		<if test="modularId !=null and modularId != ''">
+			and
+			modular_parent_id = #{modularId,jdbcType=VARCHAR}
+		</if>
+		<if test="modularCode !=null and modularCode != ''">
+			and
+			modular_code like #{modularCode,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<!-- lijufa start -->
+	<resultMap id="orgBaseResultMap"
+		type="com.dcits.djk.manager.single.model.BhSysUserOrgInfo">
+		<id column="org_id" property="orgId" jdbcType="CHAR" />
+		<result column="org_name" property="orgName" jdbcType="VARCHAR" />
+		<result column="org_parent_id" property="orgParentId" jdbcType="CHAR" />
+		<result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+		<result column="comments" property="comments" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="orgBase_Column_List">
+		org_id, org_name, org_parent_id, org_code, comments
+	</sql>
+	<!-- lijufa 查询子机构start -->
+	<select id="selectByOrgParentId" resultMap="orgBaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="orgBase_Column_List" />
+		from bh_sys_user_org_info
+		where org_parent_id = #{orgId,jdbcType=CHAR}
+	</select>
+	<!-- lijufa 通过orgCode查询机构 -->
+	<select id="selectByorgCode" resultMap="orgBaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="orgBase_Column_List" />
+		from bh_sys_user_org_info
+		where org_code = #{orgCode,jdbcType=CHAR}
+	</select>
+	<select id="getOrgListByCaseOnPage" resultMap="orgBaseResultMap">
+		select
+		<include refid="orgBase_Column_List" />
+		from bh_sys_user_org_info
+		where 1=1
+		<if test="serch_name !=null and serch_name != ''">
+			and org_name like
+			#{serch_name,jdbcType=VARCHAR}
+		</if>
+		<if test="serch_orgCode !=null and serch_orgCode != ''">
+			and
+			org_code like #{serch_orgCode,jdbcType=VARCHAR}
+		</if>
+		<if test="parentOrgId !=null and parentOrgId != ''">
+			and
+			org_parent_id = #{parentOrgId,jdbcType=VARCHAR}
+		</if>
+		and org_id in
+		<foreach item="item" index="index" collection="orgIds" open="("
+			separator="," close=")"> #{item}
+		</foreach>
+		limit #{page,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+	</select>
+	<select id="getCountOrgListByCaseOnPage" resultType="java.lang.Integer">
+		select count(1) from bh_sys_user_org_info
+		where 1=1
+		<if test="serch_name !=null and serch_name != ''">
+			and org_name like
+			#{serch_name,jdbcType=VARCHAR}
+		</if>
+		<if test="serch_orgCode !=null and serch_orgCode != ''">
+			and
+			org_code like #{serch_orgCode,jdbcType=VARCHAR}
+		</if>
+		<if test="parentOrgId !=null and parentOrgId != ''">
+			and
+			org_parent_id = #{parentOrgId,jdbcType=VARCHAR}
+		</if>
+		and org_id in
+		<foreach item="item" index="index" collection="orgIds" open="("
+			separator="," close=")"> #{item}
+		</foreach>
+	</select>
+	<!--lijufa end -->
+	<!-- xingyxa start -->
+	<select id="getPostsByWhere" resultType="java.util.HashMap"
+		parameterType="java.lang.String">
+		select t.post_id,t.post_name from bh_sys_user_post_info
+		t,bh_sys_user_org_rel t2
+		where t.post_id = t2.post_id
+		and t2.user_id = #{userId,jdbcType=CHAR}
+		group by t.post_id,t.post_name
+		order by t.post_name
+	</select>
+	<select id="getPostsByNotIn" resultType="java.util.HashMap"
+		parameterType="java.lang.String">
+		select t.* from bh_sys_user_post_info t
+		where t.post_id not in
+		(select t2.post_id from bh_sys_user_org_rel t2
+		where t2.user_id = #{userId,jdbcType=VARCHAR})
+		order by t.post_name
+	</select>
+	<select id="getOrgsByWhere" resultType="java.util.HashMap"
+		parameterType="java.lang.String">
+		select t.org_id,t.org_name from bh_sys_user_org_info
+		t,bh_sys_user_org_rel t2
+		where t.org_id = t2.org_id
+		and t2.user_id = #{userId,jdbcType=VARCHAR}
+		group
+		by t.org_id,t.org_name
+		order by t.org_name
+	</select>
+
+	<select id="getCountUser" resultType="java.lang.Integer"
+		parameterType="com.dcits.djk.manager.single.model.BhSysUserLoginInfo">
+		select count(1) from bh_sys_user_login_info t
+		where 1=1
+		<if test="name !=null and name != ''">
+			and t.name =
+			#{name,jdbcType=VARCHAR}
+		</if>
+		<if test="loginName !=null and loginName != ''">
+			and t.login_name =
+			#{loginName,jdbcType=VARCHAR}
+		</if>
+		<if test="staffNum !=null and staffNum != ''">
+			and t.staff_num like
+			#{staffNum,jdbcType=VARCHAR}
+		</if>
+		<if test="userId !=null and userId != ''">
+			and t.user_id !=
+			#{userId,jdbcType=VARCHAR}
+		</if>
+	</select>
+
+	<select id="getOrgs" resultType="java.util.HashMap" parameterType="com.dcits.djk.manager.single.model.BhSysUserLoginInfoExample" >
+		select * from
+		bh_sys_user_org_info
+		<if test="_parameter != null" >
+	      <include refid="Example_Where_Clause" />
+	    </if>
+	    <if test="orderByClause != null" >
+	      order by ${orderByClause}
+	    </if>
+	</select>
+	<delete id="deleteUserOrgRelByUserId" parameterType="java.lang.String">
+		delete from bh_sys_user_org_rel
+		where user_id = #{user_id,jdbcType=CHAR}
+	</delete>
+
+	<select id="getPosts" resultType="java.util.HashMap">
+	    select * from  bh_sys_user_post_info 
+	    where 1=1 
+	    <if test="isadmin ==0" >
+	      and post_id!='f0d0b33152704c8d9bcd2a0bc579848f'
+	    </if>		
+		 order by post_name
+	</select>
+	<select id="getUserRels" resultType="java.util.HashMap">
+		select t1.org_name,t2.post_name,t.* from bh_sys_user_org_rel t,bh_sys_user_org_info t1,bh_sys_user_post_info t2 
+		where t.org_id = t1.org_id and t.post_id = t2.post_id 
+		and t.user_id = #{user_id,jdbcType=CHAR}  
+		order by t.user_id,t1.org_code
+	</select>
+	<!-- xingyxa end -->
+		<!-- cuiwt start-->
+	<select id="getOrgInfoColumn" resultMap="orgBaseResultMap" parameterType="java.lang.String" >
+		select * from bh_sys_user_org_info t 
+		where t.org_id in (select t1.org_id from bh_sys_user_org_rel t1 where t1.user_id = #{userId,jdbcType=CHAR})
+	</select>
+	<!-- cuiwt end -->
+</mapper>

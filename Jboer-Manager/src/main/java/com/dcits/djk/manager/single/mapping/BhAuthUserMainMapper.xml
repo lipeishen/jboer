@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.djk.manager.single.mapper.BhAuthUserMainMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhAuthUserMain" >
+    <id column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="surname" property="surname" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="identification_type" property="identificationType" jdbcType="CHAR" />
+    <result column="identification_num" property="identificationNum" jdbcType="VARCHAR" />
+    <result column="mobile_phone" property="mobilePhone" jdbcType="VARCHAR" />
+    <result column="tel_area_code" property="telAreaCode" jdbcType="VARCHAR" />
+    <result column="tel_number" property="telNumber" jdbcType="VARCHAR" />
+    <result column="tel_tran_code" property="telTranCode" jdbcType="VARCHAR" />
+    <result column="addr_province" property="addrProvince" jdbcType="VARCHAR" />
+    <result column="addr_city" property="addrCity" jdbcType="VARCHAR" />
+    <result column="addr_county" property="addrCounty" jdbcType="VARCHAR" />
+    <result column="addr_area" property="addrArea" jdbcType="VARCHAR" />
+    <result column="addr_detail" property="addrDetail" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="head_portrait" property="headPortrait" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_id, surname, name, identification_type, identification_num, mobile_phone, tel_area_code, 
+    tel_number, tel_tran_code, addr_province, addr_city, addr_county, addr_area, addr_detail, 
+    email, sex, birthday, create_date, modify_date, head_portrait
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from bh_auth_user_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bh_auth_user_main
+    where user_id = #{userId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bh_auth_user_main
+    where user_id = #{userId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMainExample" >
+    delete from bh_auth_user_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMain" >
+    insert into bh_auth_user_main (user_id, surname, name, 
+      identification_type, identification_num, mobile_phone, 
+      tel_area_code, tel_number, tel_tran_code, 
+      addr_province, addr_city, addr_county, 
+      addr_area, addr_detail, email, 
+      sex, birthday, create_date, 
+      modify_date, head_portrait)
+    values (#{userId,jdbcType=CHAR}, #{surname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{identificationType,jdbcType=CHAR}, #{identificationNum,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, 
+      #{telAreaCode,jdbcType=VARCHAR}, #{telNumber,jdbcType=VARCHAR}, #{telTranCode,jdbcType=VARCHAR}, 
+      #{addrProvince,jdbcType=VARCHAR}, #{addrCity,jdbcType=VARCHAR}, #{addrCounty,jdbcType=VARCHAR}, 
+      #{addrArea,jdbcType=VARCHAR}, #{addrDetail,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{birthday,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{modifyDate,jdbcType=TIMESTAMP}, #{headPortrait,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMain" >
+    insert into bh_auth_user_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="surname != null" >
+        surname,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="identificationType != null" >
+        identification_type,
+      </if>
+      <if test="identificationNum != null" >
+        identification_num,
+      </if>
+      <if test="mobilePhone != null" >
+        mobile_phone,
+      </if>
+      <if test="telAreaCode != null" >
+        tel_area_code,
+      </if>
+      <if test="telNumber != null" >
+        tel_number,
+      </if>
+      <if test="telTranCode != null" >
+        tel_tran_code,
+      </if>
+      <if test="addrProvince != null" >
+        addr_province,
+      </if>
+      <if test="addrCity != null" >
+        addr_city,
+      </if>
+      <if test="addrCounty != null" >
+        addr_county,
+      </if>
+      <if test="addrArea != null" >
+        addr_area,
+      </if>
+      <if test="addrDetail != null" >
+        addr_detail,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+      <if test="headPortrait != null" >
+        head_portrait,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="surname != null" >
+        #{surname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identificationType != null" >
+        #{identificationType,jdbcType=CHAR},
+      </if>
+      <if test="identificationNum != null" >
+        #{identificationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null" >
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="telAreaCode != null" >
+        #{telAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="telNumber != null" >
+        #{telNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="telTranCode != null" >
+        #{telTranCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addrProvince != null" >
+        #{addrProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="addrCity != null" >
+        #{addrCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addrCounty != null" >
+        #{addrCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="addrArea != null" >
+        #{addrArea,jdbcType=VARCHAR},
+      </if>
+      <if test="addrDetail != null" >
+        #{addrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="headPortrait != null" >
+        #{headPortrait,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMainExample" resultType="java.lang.Integer" >
+    select count(*) from bh_auth_user_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bh_auth_user_main
+    <set >
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=CHAR},
+      </if>
+      <if test="record.surname != null" >
+        surname = #{record.surname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identificationType != null" >
+        identification_type = #{record.identificationType,jdbcType=CHAR},
+      </if>
+      <if test="record.identificationNum != null" >
+        identification_num = #{record.identificationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobilePhone != null" >
+        mobile_phone = #{record.mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telAreaCode != null" >
+        tel_area_code = #{record.telAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telNumber != null" >
+        tel_number = #{record.telNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telTranCode != null" >
+        tel_tran_code = #{record.telTranCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrProvince != null" >
+        addr_province = #{record.addrProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrCity != null" >
+        addr_city = #{record.addrCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrCounty != null" >
+        addr_county = #{record.addrCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrArea != null" >
+        addr_area = #{record.addrArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrDetail != null" >
+        addr_detail = #{record.addrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=CHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyDate != null" >
+        modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.headPortrait != null" >
+        head_portrait = #{record.headPortrait,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bh_auth_user_main
+    set user_id = #{record.userId,jdbcType=CHAR},
+      surname = #{record.surname,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      identification_type = #{record.identificationType,jdbcType=CHAR},
+      identification_num = #{record.identificationNum,jdbcType=VARCHAR},
+      mobile_phone = #{record.mobilePhone,jdbcType=VARCHAR},
+      tel_area_code = #{record.telAreaCode,jdbcType=VARCHAR},
+      tel_number = #{record.telNumber,jdbcType=VARCHAR},
+      tel_tran_code = #{record.telTranCode,jdbcType=VARCHAR},
+      addr_province = #{record.addrProvince,jdbcType=VARCHAR},
+      addr_city = #{record.addrCity,jdbcType=VARCHAR},
+      addr_county = #{record.addrCounty,jdbcType=VARCHAR},
+      addr_area = #{record.addrArea,jdbcType=VARCHAR},
+      addr_detail = #{record.addrDetail,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=CHAR},
+      birthday = #{record.birthday,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      head_portrait = #{record.headPortrait,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMain" >
+    update bh_auth_user_main
+    <set >
+      <if test="surname != null" >
+        surname = #{surname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identificationType != null" >
+        identification_type = #{identificationType,jdbcType=CHAR},
+      </if>
+      <if test="identificationNum != null" >
+        identification_num = #{identificationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null" >
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="telAreaCode != null" >
+        tel_area_code = #{telAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="telNumber != null" >
+        tel_number = #{telNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="telTranCode != null" >
+        tel_tran_code = #{telTranCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addrProvince != null" >
+        addr_province = #{addrProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="addrCity != null" >
+        addr_city = #{addrCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addrCounty != null" >
+        addr_county = #{addrCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="addrArea != null" >
+        addr_area = #{addrArea,jdbcType=VARCHAR},
+      </if>
+      <if test="addrDetail != null" >
+        addr_detail = #{addrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null" >
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="headPortrait != null" >
+        head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMain" >
+    update bh_auth_user_main
+    set surname = #{surname,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      identification_type = #{identificationType,jdbcType=CHAR},
+      identification_num = #{identificationNum,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      tel_area_code = #{telAreaCode,jdbcType=VARCHAR},
+      tel_number = #{telNumber,jdbcType=VARCHAR},
+      tel_tran_code = #{telTranCode,jdbcType=VARCHAR},
+      addr_province = #{addrProvince,jdbcType=VARCHAR},
+      addr_city = #{addrCity,jdbcType=VARCHAR},
+      addr_county = #{addrCounty,jdbcType=VARCHAR},
+      addr_area = #{addrArea,jdbcType=VARCHAR},
+      addr_detail = #{addrDetail,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      head_portrait = #{headPortrait,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=CHAR}
+  </update>
+</mapper>

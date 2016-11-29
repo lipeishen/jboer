@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.djk.manager.union.mapper.CacheSystemMapper">
+	<select id="getAllProvice" resultType="java.util.HashMap">
+		select * from bh_sys_dict_province t where t.is_valid = '1' order by t.province_code
+	</select>
+	
+	<select id="getCitysByProvinceCode" resultType="java.util.HashMap">
+		select * from bh_sys_dict_city t where t.is_valid = '1' and t.province_code = #{provinceCode,jdbcType=VARCHAR} order by t.city_code
+	</select>
+	
+	<select id="getCountrysByCityCode" resultType="java.util.HashMap">
+		select * from bh_sys_dict_country t where t.is_valid = '1' and t.city_code = #{cityCode,jdbcType=VARCHAR} order by t.country_code
+	</select>
+	
+	<select id="getAllCity" resultType="java.util.HashMap">
+		select * from bh_sys_dict_city t where t.is_valid = '1' order by t.city_code
+	</select>
+	
+	<select id="getAllCityInGroupCountry" resultType="java.util.HashMap">
+		select t.city_code,t.city_name,t.province_code,t.is_valid,group_concat(a.country_code) as country_codes
+		from bh_sys_dict_country a  
+		left join bh_sys_dict_city t on t.city_code = a.city_code 
+		where t.is_valid = '1' and a.is_valid = '1' 
+		group by t.city_code,t.city_name,t.province_code
+		order by t.city_code
+	</select>
+	
+	<select id="getAllCountry" resultType="java.util.HashMap">
+		select * from bh_sys_dict_country t where t.is_valid = '1' ORDER BY t.city_code,t.country_code
+	</select>
+	<select id="getAllServGroup" resultType="java.util.HashMap">
+		select a.group_id as groupid,group_concat(a.service_id) as serviceids from bh_serv_group_rel a group by group_id
+		union all
+		select 'free' as groupid,group_concat(b.service_id) as serviceids from bh_serv_main_info b where b.service_type = '1';
+	</select>
+	
+</mapper>

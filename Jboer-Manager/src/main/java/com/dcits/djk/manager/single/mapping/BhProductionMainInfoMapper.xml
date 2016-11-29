@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.djk.manager.single.mapper.BhProductionMainInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhProductionMainInfo" >
+    <id column="production_id" property="productionId" jdbcType="CHAR" />
+    <result column="production_name" property="productionName" jdbcType="VARCHAR" />
+    <result column="production_type" property="productionType" jdbcType="CHAR" />
+    <result column="production_pic_url" property="productionPicUrl" jdbcType="VARCHAR" />
+    <result column="production_price" property="productionPrice" jdbcType="DOUBLE" />
+    <result column="production_size" property="productionSize" jdbcType="VARCHAR" />
+    <result column="production_color" property="productionColor" jdbcType="CHAR" />
+    <result column="prodction_usage" property="prodctionUsage" jdbcType="VARCHAR" />
+    <result column="production_material" property="productionMaterial" jdbcType="VARCHAR" />
+    <result column="production_stock_total" property="productionStockTotal" jdbcType="BIGINT" />
+    <result column="production_stock_remain" property="productionStockRemain" jdbcType="BIGINT" />
+    <result column="production_create_time" property="productionCreateTime" jdbcType="DATE" />
+    <result column="production_isself" property="productionIsself" jdbcType="CHAR" />
+    <result column="production_source" property="productionSource" jdbcType="CHAR" />
+    <result column="production_invalid_time" property="productionInvalidTime" jdbcType="DATE" />
+    <result column="production_issale" property="productionIssale" jdbcType="CHAR" />
+    <result column="production_isvalid" property="productionIsvalid" jdbcType="CHAR" />
+    <result column="production_desc" property="productionDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    production_id, production_name, production_type, production_pic_url, production_price, 
+    production_size, production_color, prodction_usage, production_material, production_stock_total, 
+    production_stock_remain, production_create_time, production_isself, production_source, 
+    production_invalid_time, production_issale, production_isvalid, production_desc
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.djk.manager.single.model.BhProductionMainInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from bh_production_main_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bh_production_main_info
+    where production_id = #{productionId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bh_production_main_info
+    where production_id = #{productionId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dcits.djk.manager.single.model.BhProductionMainInfoExample" >
+    delete from bh_production_main_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dcits.djk.manager.single.model.BhProductionMainInfo" >
+    insert into bh_production_main_info (production_id, production_name, production_type, 
+      production_pic_url, production_price, production_size, 
+      production_color, prodction_usage, production_material, 
+      production_stock_total, production_stock_remain, 
+      production_create_time, production_isself, production_source, 
+      production_invalid_time, production_issale, production_isvalid, 
+      production_desc)
+    values (#{productionId,jdbcType=CHAR}, #{productionName,jdbcType=VARCHAR}, #{productionType,jdbcType=CHAR}, 
+      #{productionPicUrl,jdbcType=VARCHAR}, #{productionPrice,jdbcType=DOUBLE}, #{productionSize,jdbcType=VARCHAR}, 
+      #{productionColor,jdbcType=CHAR}, #{prodctionUsage,jdbcType=VARCHAR}, #{productionMaterial,jdbcType=VARCHAR}, 
+      #{productionStockTotal,jdbcType=BIGINT}, #{productionStockRemain,jdbcType=BIGINT}, 
+      #{productionCreateTime,jdbcType=DATE}, #{productionIsself,jdbcType=CHAR}, #{productionSource,jdbcType=CHAR}, 
+      #{productionInvalidTime,jdbcType=DATE}, #{productionIssale,jdbcType=CHAR}, #{productionIsvalid,jdbcType=CHAR}, 
+      #{productionDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dcits.djk.manager.single.model.BhProductionMainInfo" >
+    insert into bh_production_main_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productionId != null" >
+        production_id,
+      </if>
+      <if test="productionName != null" >
+        production_name,
+      </if>
+      <if test="productionType != null" >
+        production_type,
+      </if>
+      <if test="productionPicUrl != null" >
+        production_pic_url,
+      </if>
+      <if test="productionPrice != null" >
+        production_price,
+      </if>
+      <if test="productionSize != null" >
+        production_size,
+      </if>
+      <if test="productionColor != null" >
+        production_color,
+      </if>
+      <if test="prodctionUsage != null" >
+        prodction_usage,
+      </if>
+      <if test="productionMaterial != null" >
+        production_material,
+      </if>
+      <if test="productionStockTotal != null" >
+        production_stock_total,
+      </if>
+      <if test="productionStockRemain != null" >
+        production_stock_remain,
+      </if>
+      <if test="productionCreateTime != null" >
+        production_create_time,
+      </if>
+      <if test="productionIsself != null" >
+        production_isself,
+      </if>
+      <if test="productionSource != null" >
+        production_source,
+      </if>
+      <if test="productionInvalidTime != null" >
+        production_invalid_time,
+      </if>
+      <if test="productionIssale != null" >
+        production_issale,
+      </if>
+      <if test="productionIsvalid != null" >
+        production_isvalid,
+      </if>
+      <if test="productionDesc != null" >
+        production_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productionId != null" >
+        #{productionId,jdbcType=CHAR},
+      </if>
+      <if test="productionName != null" >
+        #{productionName,jdbcType=VARCHAR},
+      </if>
+      <if test="productionType != null" >
+        #{productionType,jdbcType=CHAR},
+      </if>
+      <if test="productionPicUrl != null" >
+        #{productionPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="productionPrice != null" >
+        #{productionPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productionSize != null" >
+        #{productionSize,jdbcType=VARCHAR},
+      </if>
+      <if test="productionColor != null" >
+        #{productionColor,jdbcType=CHAR},
+      </if>
+      <if test="prodctionUsage != null" >
+        #{prodctionUsage,jdbcType=VARCHAR},
+      </if>
+      <if test="productionMaterial != null" >
+        #{productionMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="productionStockTotal != null" >
+        #{productionStockTotal,jdbcType=BIGINT},
+      </if>
+      <if test="productionStockRemain != null" >
+        #{productionStockRemain,jdbcType=BIGINT},
+      </if>
+      <if test="productionCreateTime != null" >
+        #{productionCreateTime,jdbcType=DATE},
+      </if>
+      <if test="productionIsself != null" >
+        #{productionIsself,jdbcType=CHAR},
+      </if>
+      <if test="productionSource != null" >
+        #{productionSource,jdbcType=CHAR},
+      </if>
+      <if test="productionInvalidTime != null" >
+        #{productionInvalidTime,jdbcType=DATE},
+      </if>
+      <if test="productionIssale != null" >
+        #{productionIssale,jdbcType=CHAR},
+      </if>
+      <if test="productionIsvalid != null" >
+        #{productionIsvalid,jdbcType=CHAR},
+      </if>
+      <if test="productionDesc != null" >
+        #{productionDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dcits.djk.manager.single.model.BhProductionMainInfoExample" resultType="java.lang.Integer" >
+    select count(*) from bh_production_main_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bh_production_main_info
+    <set >
+      <if test="record.productionId != null" >
+        production_id = #{record.productionId,jdbcType=CHAR},
+      </if>
+      <if test="record.productionName != null" >
+        production_name = #{record.productionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productionType != null" >
+        production_type = #{record.productionType,jdbcType=CHAR},
+      </if>
+      <if test="record.productionPicUrl != null" >
+        production_pic_url = #{record.productionPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productionPrice != null" >
+        production_price = #{record.productionPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.productionSize != null" >
+        production_size = #{record.productionSize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productionColor != null" >
+        production_color = #{record.productionColor,jdbcType=CHAR},
+      </if>
+      <if test="record.prodctionUsage != null" >
+        prodction_usage = #{record.prodctionUsage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productionMaterial != null" >
+        production_material = #{record.productionMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productionStockTotal != null" >
+        production_stock_total = #{record.productionStockTotal,jdbcType=BIGINT},
+      </if>
+      <if test="record.productionStockRemain != null" >
+        production_stock_remain = #{record.productionStockRemain,jdbcType=BIGINT},
+      </if>
+      <if test="record.productionCreateTime != null" >
+        production_create_time = #{record.productionCreateTime,jdbcType=DATE},
+      </if>
+      <if test="record.productionIsself != null" >
+        production_isself = #{record.productionIsself,jdbcType=CHAR},
+      </if>
+      <if test="record.productionSource != null" >
+        production_source = #{record.productionSource,jdbcType=CHAR},
+      </if>
+      <if test="record.productionInvalidTime != null" >
+        production_invalid_time = #{record.productionInvalidTime,jdbcType=DATE},
+      </if>
+      <if test="record.productionIssale != null" >
+        production_issale = #{record.productionIssale,jdbcType=CHAR},
+      </if>
+      <if test="record.productionIsvalid != null" >
+        production_isvalid = #{record.productionIsvalid,jdbcType=CHAR},
+      </if>
+      <if test="record.productionDesc != null" >
+        production_desc = #{record.productionDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bh_production_main_info
+    set production_id = #{record.productionId,jdbcType=CHAR},
+      production_name = #{record.productionName,jdbcType=VARCHAR},
+      production_type = #{record.productionType,jdbcType=CHAR},
+      production_pic_url = #{record.productionPicUrl,jdbcType=VARCHAR},
+      production_price = #{record.productionPrice,jdbcType=DOUBLE},
+      production_size = #{record.productionSize,jdbcType=VARCHAR},
+      production_color = #{record.productionColor,jdbcType=CHAR},
+      prodction_usage = #{record.prodctionUsage,jdbcType=VARCHAR},
+      production_material = #{record.productionMaterial,jdbcType=VARCHAR},
+      production_stock_total = #{record.productionStockTotal,jdbcType=BIGINT},
+      production_stock_remain = #{record.productionStockRemain,jdbcType=BIGINT},
+      production_create_time = #{record.productionCreateTime,jdbcType=DATE},
+      production_isself = #{record.productionIsself,jdbcType=CHAR},
+      production_source = #{record.productionSource,jdbcType=CHAR},
+      production_invalid_time = #{record.productionInvalidTime,jdbcType=DATE},
+      production_issale = #{record.productionIssale,jdbcType=CHAR},
+      production_isvalid = #{record.productionIsvalid,jdbcType=CHAR},
+      production_desc = #{record.productionDesc,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.djk.manager.single.model.BhProductionMainInfo" >
+    update bh_production_main_info
+    <set >
+      <if test="productionName != null" >
+        production_name = #{productionName,jdbcType=VARCHAR},
+      </if>
+      <if test="productionType != null" >
+        production_type = #{productionType,jdbcType=CHAR},
+      </if>
+      <if test="productionPicUrl != null" >
+        production_pic_url = #{productionPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="productionPrice != null" >
+        production_price = #{productionPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productionSize != null" >
+        production_size = #{productionSize,jdbcType=VARCHAR},
+      </if>
+      <if test="productionColor != null" >
+        production_color = #{productionColor,jdbcType=CHAR},
+      </if>
+      <if test="prodctionUsage != null" >
+        prodction_usage = #{prodctionUsage,jdbcType=VARCHAR},
+      </if>
+      <if test="productionMaterial != null" >
+        production_material = #{productionMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="productionStockTotal != null" >
+        production_stock_total = #{productionStockTotal,jdbcType=BIGINT},
+      </if>
+      <if test="productionStockRemain != null" >
+        production_stock_remain = #{productionStockRemain,jdbcType=BIGINT},
+      </if>
+      <if test="productionCreateTime != null" >
+        production_create_time = #{productionCreateTime,jdbcType=DATE},
+      </if>
+      <if test="productionIsself != null" >
+        production_isself = #{productionIsself,jdbcType=CHAR},
+      </if>
+      <if test="productionSource != null" >
+        production_source = #{productionSource,jdbcType=CHAR},
+      </if>
+      <if test="productionInvalidTime != null" >
+        production_invalid_time = #{productionInvalidTime,jdbcType=DATE},
+      </if>
+      <if test="productionIssale != null" >
+        production_issale = #{productionIssale,jdbcType=CHAR},
+      </if>
+      <if test="productionIsvalid != null" >
+        production_isvalid = #{productionIsvalid,jdbcType=CHAR},
+      </if>
+      <if test="productionDesc != null" >
+        production_desc = #{productionDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where production_id = #{productionId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dcits.djk.manager.single.model.BhProductionMainInfo" >
+    update bh_production_main_info
+    set production_name = #{productionName,jdbcType=VARCHAR},
+      production_type = #{productionType,jdbcType=CHAR},
+      production_pic_url = #{productionPicUrl,jdbcType=VARCHAR},
+      production_price = #{productionPrice,jdbcType=DOUBLE},
+      production_size = #{productionSize,jdbcType=VARCHAR},
+      production_color = #{productionColor,jdbcType=CHAR},
+      prodction_usage = #{prodctionUsage,jdbcType=VARCHAR},
+      production_material = #{productionMaterial,jdbcType=VARCHAR},
+      production_stock_total = #{productionStockTotal,jdbcType=BIGINT},
+      production_stock_remain = #{productionStockRemain,jdbcType=BIGINT},
+      production_create_time = #{productionCreateTime,jdbcType=DATE},
+      production_isself = #{productionIsself,jdbcType=CHAR},
+      production_source = #{productionSource,jdbcType=CHAR},
+      production_invalid_time = #{productionInvalidTime,jdbcType=DATE},
+      production_issale = #{productionIssale,jdbcType=CHAR},
+      production_isvalid = #{productionIsvalid,jdbcType=CHAR},
+      production_desc = #{productionDesc,jdbcType=VARCHAR}
+    where production_id = #{productionId,jdbcType=CHAR}
+  </update>
+</mapper>
