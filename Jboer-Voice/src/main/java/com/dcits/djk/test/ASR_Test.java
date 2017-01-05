@@ -1,4 +1,4 @@
-package com.dctis.djk;
+package com.dcits.djk.test;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,6 +13,9 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.http.HttpStatus;
+
+import com.dcits.djk.MD5;
+import com.dcits.djk.env.FileDealEnv;
 
 
 public class ASR_Test {
@@ -46,11 +49,9 @@ public class ASR_Test {
 			myPost.setRequestHeader("x-session-key", MD5.getMD5(str.getBytes()));
 			myPost.setRequestHeader("x-udid", "101:123456789");
 			
-			ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-			filepath=Thread.currentThread().getContextClassLoader().getResource("nihao.pcm").getPath();
-			//filepath = new String(System.getProperty("user.dir") + "\\nihao.pcm");
+			filepath=FileDealEnv.getFileVoicePath();
 			System.out.println(filepath);
-			File fileSrc = new File(filepath);
+			File fileSrc = new File(filepath+"test.pcm");
 			if (!fileSrc.exists()){
 				System.out.println("文件不存在！");
 				return;

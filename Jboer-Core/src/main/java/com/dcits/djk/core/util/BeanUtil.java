@@ -60,6 +60,8 @@ public class BeanUtil {
         return map;  
     }
 	
+	
+	
 	/**
 	 * map转实体类
 	 * @author lips

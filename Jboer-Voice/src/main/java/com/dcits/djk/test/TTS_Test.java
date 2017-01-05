@@ -1,4 +1,4 @@
-package com.dctis.djk;
+package com.dcits.djk.test;
 
 
 import java.io.BufferedInputStream;
@@ -14,10 +14,12 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 
+import com.dcits.djk.MD5;
+import com.dcits.djk.env.FileDealEnv;
+
 public class TTS_Test {
 
 	private static String URL = "http://test.api.hcicloud.com:8880/tts/synthtext";
-	//private static String URL = "http://222.82.253.98:8005/tts/synthtext";
 	private static String responseString;
 	private static String app_key = "3d5d5478";
 	private static String dev_key = "ef0b85fa92eb1c66ab7e6cb28ba292d4";
@@ -71,10 +73,10 @@ public class TTS_Test {
 				responseString = responseString.substring(responseString.indexOf("</ResponseInfo>") + 15);
 				
 				strByte = responseString.getBytes("iso-8859-1");
-				String path = System.getProperty("user.dir") + "\\wav\\";
+				String path = FileDealEnv.getFileVoicePath();
 				System.out.println(path);
 				//output = String.format("%s", path);
-				File file = new File(path, "nihao.pcm");
+				File file = new File(path, "nihao1.pcm");
 				if (!file.exists())
 					file.createNewFile();
 				FileOutputStream outStream = new FileOutputStream(file);

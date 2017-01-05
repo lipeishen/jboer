@@ -11,6 +11,7 @@
     <module>Jboer-Core</module>
     <module>Jboer-Manager</module>
     <module>Jboer_Voice</module>
+    <module>Jboer-Voice</module>
   </modules>
 
   <properties>

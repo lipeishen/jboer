@@ -1,4 +1,4 @@
-package com.dctis.djk;
+package com.dcits.djk;
 
 
 public class MD5 {
