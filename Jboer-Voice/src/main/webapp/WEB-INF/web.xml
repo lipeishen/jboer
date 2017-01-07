@@ -23,7 +23,7 @@
     </listener>
 	
 	<!-- Spring 配置 -->
-	<!-- <context-param>
+	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:/spring-context.xml
@@ -32,7 +32,7 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	 -->
+	
 	<!-- spring mvc -->
 	<servlet>
 		<servlet-name>springmvc</servlet-name>
