@@ -3,19 +3,20 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.dcits.djk</groupId>
+    <groupId>com.dcits.jb</groupId>
     <artifactId>Jboer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>Jboer_Voice</artifactId>
-  <name>Jboer_Voice</name>
+  <artifactId>Jboer-Voice</artifactId>
+  <packaging>war</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
   <dependency>
-	<groupId>com.dcits.djk</groupId>
+	<groupId>com.dcits.jb</groupId>
 	<artifactId>Jboer-Core</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
     </dependency>
   <dependency>
     <groupId>commons-beanutils</groupId>
@@ -108,11 +109,6 @@
     <artifactId>xmlsec</artifactId>
     <version>1.4.4</version>
 	</dependency>
-		<dependency>
-    	<groupId>io.netty</groupId>
-    	<artifactId>netty-all</artifactId>
-    	<version>4.1.6.Final</version>
-		</dependency>
 		<!-- Spring core & mvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -134,22 +130,7 @@
 		</dependency>
 		
 		<!--session -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-redis</artifactId>
-			<version>1.6.2.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session-data-redis</artifactId>
-			<version>1.0.2.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session</artifactId>
-			<version>1.0.2.RELEASE</version>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -204,18 +185,6 @@
 			<version>1.0.2.RELEASE</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- CGLib for @Configuration -->
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib-nodep</artifactId>
-			<version>3.2.0</version>
-			<scope>runtime</scope>
-		</dependency>
 		<!--data -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -260,6 +229,14 @@
 			<artifactId>jackson-core</artifactId>
 			<version>2.7.0</version>
 		</dependency>
+		
+		<!-- 中文分词 -->
+		
+		<dependency>
+    		<groupId>com.huaban</groupId>
+   			 <artifactId>jieba-analysis</artifactId>
+    		<version>0.0.2</version>
+		</dependency>
   </dependencies>
   <!-- SpringMVC jar -->
 	<dependencyManagement>
@@ -273,5 +250,4 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
 </project>

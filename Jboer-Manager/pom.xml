@@ -224,10 +224,104 @@
 			<artifactId>kaptcha</artifactId>
 			<version>0.0.9</version>
 		</dependency>
-	    <dependency>
-		   <groupId>com.qiniu</groupId>
-		   <artifactId>qiniu-java-sdk</artifactId>
-		   <version>[7.0.0, 7.0.99]</version>
-	   	</dependency>
+		
+		<dependency>
+    <groupId>commons-beanutils</groupId>
+    <artifactId>commons-beanutils</artifactId>
+    <version>1.8.0</version>
+  </dependency>
+  <dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.6</version>
+  </dependency>
+  
+  <dependency>
+    <groupId>commons-collections</groupId>
+    <artifactId>commons-collections</artifactId>
+    <version>3.1</version>
+   </dependency>
+   <dependency>
+    <groupId>commons-dbcp</groupId>
+    <artifactId>commons-dbcp</artifactId>
+    <version>1.4</version>
+	</dependency>
+	<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.2.2</version>
+   </dependency>
+   <dependency>
+    <groupId>commons-httpclient</groupId>
+    <artifactId>commons-httpclient</artifactId>
+    <version>3.0.1</version>
+    </dependency>
+    <dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.0.1</version>
+	</dependency>
+	<dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.4</version>
+    </dependency>
+    <dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.1</version>
+	</dependency>
+	<dependency>
+    <groupId>commons-logging</groupId>
+    <artifactId>commons-logging</artifactId>
+    <version>1.1.1</version>
+	</dependency>
+	<dependency>
+    <groupId>commons-pool</groupId>
+    <artifactId>commons-pool</artifactId>
+    <version>1.6</version>
+	</dependency>
+	<dependency>
+    <groupId>dom4j</groupId>
+    <artifactId>dom4j</artifactId>
+    <version>1.6.1</version>
+	</dependency>
+	<dependency>
+    <groupId>net.sf.ezmorph</groupId>
+    <artifactId>ezmorph</artifactId>
+    <version>1.0.3</version>
+	</dependency>
+	<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>fastjson</artifactId>
+    <version>1.2.2</version>
+	</dependency>
+	<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.0-beta2</version>
+   </dependency>
+   <dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.1-alpha1</version>
+	</dependency>
+	<dependency>
+    <groupId>org.jdom</groupId>
+    <artifactId>jdom</artifactId>
+    <version>2.0.2</version>
+	</dependency>
+	<dependency>
+    <groupId>org.apache.santuario</groupId>
+    <artifactId>xmlsec</artifactId>
+    <version>1.4.4</version>
+	</dependency>
+	   <!-- 中文分词 -->
+		
+		<dependency>
+    		<groupId>com.huaban</groupId>
+   			 <artifactId>jieba-analysis</artifactId>
+    		<version>0.0.2</version>
+		</dependency>
 	</dependencies>
 </project>

@@ -1,9 +1,6 @@
 package com.dcits.jb.baidu;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -12,12 +9,13 @@ import java.net.URL;
 import com.dcits.jb.baidu.json.JSONObject;
 
 public class TTS {
-	   private static final String serverURL = "http://tsn.baidu.com/text2audio";
+	    private static final String serverURL = "http://tsn.baidu.com/text2audio";
 	    private static String token = "";
 	    //put your own params here
 	    private static final String apiKey = "ROymsLbbkB6PlPXTjbnY70Kx";
 	    private static final String secretKey = "sxnalkP0ZXSKFCj9aMyknVqYm67aCAyk";
 	    private static final String cuid = "7541281";
+	    private static final String tnsUrl="http://tsn.baidu.com/text2audio?tex=***&lan=zh&cuid=***&ctp=1&tok=***";
 
 	    static  {
 	        try {
@@ -46,7 +44,8 @@ public class TTS {
 	     * get 方式实现语音合成
 	     * @author lips
 	     */
-	    private static void TextToVoice(String pcmurl){
+	    private static void TextToVoice(String text){
+	    	
 
 	    	
 	    }

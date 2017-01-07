@@ -17,12 +17,8 @@
 	<!-- springmvc 注解驱动 -->
 	<mvc:annotation-driven/>
 	<!-- 注解扫描包 -->
-	<context:component-scan base-package="com.dcits.djk.manager.controller">
+	<context:component-scan base-package="com.dcits.jb.controller">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
-	<!-- 第二个注解包，这里面只有@Scheduled，所以不扫描controller -->
-	<context:component-scan base-package="com.dcits.djk.manager.schedule">  
-    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />  
 	</context:component-scan>
 	
 	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
@@ -43,9 +39,4 @@
 		<!-- 后缀 -->
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-
-	<task:scheduler id="scheduler" pool-size="10" />  
-    <task:executor id="executor" keep-alive="3600" pool-size="100-200" queue-capacity="500" rejection-policy="CALLER_RUNS" /> 
-    <task:annotation-driven executor="executor" scheduler="scheduler"/>
-    
 </beans>

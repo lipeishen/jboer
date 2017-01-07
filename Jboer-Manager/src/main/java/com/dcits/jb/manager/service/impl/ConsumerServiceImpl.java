@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.dcits.jb.manager.service.ConsumerService;
 import com.dcits.jb.manager.union.mapper.ConsumerMapper;
+
+
 @Service("consumerService")
 public class ConsumerServiceImpl implements ConsumerService{
 	private Logger logger = Logger.getLogger(ConsumerServiceImpl.class);

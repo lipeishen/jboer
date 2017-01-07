@@ -17,11 +17,11 @@
 	<!-- springmvc 注解驱动 -->
 	<mvc:annotation-driven/>
 	<!-- 注解扫描包 -->
-	<context:component-scan base-package="com.dcits.djk.manager.controller">
+	<context:component-scan base-package="com.dcits.jb.manager.controller">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	<!-- 第二个注解包，这里面只有@Scheduled，所以不扫描controller -->
-	<context:component-scan base-package="com.dcits.djk.manager.schedule">  
+	<context:component-scan base-package="com.dcits.jb.manager.schedule">  
     	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />  
 	</context:component-scan>
 	
@@ -36,7 +36,7 @@
 	
 	<!-- 拦截器 -->
 	<mvc:interceptors>
-		<bean class="com.dcits.djk.manager.filter.LoginHandlerInterceptor">
+		<bean class="com.dcits.jb.manager.filter.LoginHandlerInterceptor">
 		<property name="excludeMappings">
         <list>
                <value>loginView.do</value>
@@ -64,5 +64,5 @@
     <task:annotation-driven executor="executor" scheduler="scheduler"/>
     
     <!-- 初始化数据区 -->
-	 <bean class="com.dcits.djk.manager.init.ThreadPoolInitListener"></bean> 
+	 <bean class="com.dcits.jb.manager.init.ThreadPoolInitListener"></bean> 
 </beans>

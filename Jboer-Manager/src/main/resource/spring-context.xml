@@ -20,11 +20,11 @@
 	<!-- springmvc 注解驱动 -->
 	<mvc:annotation-driven/>
 	
-	<context:component-scan base-package="com.dcits.djk.manager.service.impl">
+	<context:component-scan base-package="com.dcits.jb.manager.service.impl">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 	</context:component-scan>
 	<!-- component to scan --> 
-	<context:component-scan base-package="com.dcits.djk.manager">
+	<context:component-scan base-package="com.dcits.jb.manager">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
 	</context:component-scan>
 	
@@ -78,7 +78,7 @@
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
 	
 	<aop:config>
-		<aop:pointcut id="services" expression="execution(* com.dcits.djk.manager.service.*.*(..))" />
+		<aop:pointcut id="services" expression="execution(* com.dcits.jb.manager.service.*.*(..))" />
 		<aop:advisor pointcut-ref="services" advice-ref="txAdvice" />
 	</aop:config>
 	
