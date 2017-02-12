@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dcits.djk.manager.single.mapper.BhSysUserRoleModularMapper" >
-  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhSysUserRoleModular" >
+<mapper namespace="com.dcits.jb.manager.single.mapper.BhSysUserRoleModularMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.jb.manager.single.model.BhSysUserRoleModular" >
     <id column="role_modular_id" property="roleModularId" jdbcType="CHAR" />
     <result column="role_id" property="roleId" jdbcType="CHAR" />
     <result column="modular_id" property="modularId" jdbcType="CHAR" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List" >
     role_modular_id, role_id, modular_id
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleModularExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleModularExample" >
     select
     <if test="distinct" >
       distinct
@@ -92,19 +92,19 @@
     delete from bh_sys_user_role_modular
     where role_modular_id = #{roleModularId,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleModularExample" >
+  <delete id="deleteByExample" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleModularExample" >
     delete from bh_sys_user_role_modular
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleModular" >
+  <insert id="insert" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleModular" >
     insert into bh_sys_user_role_modular (role_modular_id, role_id, modular_id
       )
     values (#{roleModularId,jdbcType=CHAR}, #{roleId,jdbcType=CHAR}, #{modularId,jdbcType=CHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleModular" >
+  <insert id="insertSelective" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleModular" >
     insert into bh_sys_user_role_modular
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="roleModularId != null" >
@@ -129,7 +129,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleModularExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleModularExample" resultType="java.lang.Integer" >
     select count(*) from bh_sys_user_role_modular
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -161,7 +161,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleModular" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleModular" >
     update bh_sys_user_role_modular
     <set >
       <if test="roleId != null" >
@@ -173,7 +173,7 @@
     </set>
     where role_modular_id = #{roleModularId,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleModular" >
+  <update id="updateByPrimaryKey" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleModular" >
     update bh_sys_user_role_modular
     set role_id = #{roleId,jdbcType=CHAR},
       modular_id = #{modularId,jdbcType=CHAR}

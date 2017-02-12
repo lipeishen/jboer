@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dcits.djk.manager.single.mapper.BhSysUserOrgInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhSysUserOrgInfo" >
+<mapper namespace="com.dcits.jb.manager.single.mapper.BhSysUserOrgInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.jb.manager.single.model.BhSysUserOrgInfo" >
     <id column="org_id" property="orgId" jdbcType="CHAR" />
     <result column="org_name" property="orgName" jdbcType="VARCHAR" />
     <result column="org_parent_id" property="orgParentId" jdbcType="CHAR" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List" >
     org_id, org_name, org_parent_id, org_code, comments
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.djk.manager.single.model.BhSysUserOrgInfoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.jb.manager.single.model.BhSysUserOrgInfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -94,19 +94,19 @@
     delete from bh_sys_user_org_info
     where org_id = #{orgId,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.dcits.djk.manager.single.model.BhSysUserOrgInfoExample" >
+  <delete id="deleteByExample" parameterType="com.dcits.jb.manager.single.model.BhSysUserOrgInfoExample" >
     delete from bh_sys_user_org_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.dcits.djk.manager.single.model.BhSysUserOrgInfo" >
+  <insert id="insert" parameterType="com.dcits.jb.manager.single.model.BhSysUserOrgInfo" >
     insert into bh_sys_user_org_info (org_id, org_name, org_parent_id, 
       org_code, comments)
     values (#{orgId,jdbcType=CHAR}, #{orgName,jdbcType=VARCHAR}, #{orgParentId,jdbcType=CHAR}, 
       #{orgCode,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.dcits.djk.manager.single.model.BhSysUserOrgInfo" >
+  <insert id="insertSelective" parameterType="com.dcits.jb.manager.single.model.BhSysUserOrgInfo" >
     insert into bh_sys_user_org_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="orgId != null" >
@@ -143,7 +143,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.dcits.djk.manager.single.model.BhSysUserOrgInfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.dcits.jb.manager.single.model.BhSysUserOrgInfoExample" resultType="java.lang.Integer" >
     select count(*) from bh_sys_user_org_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -183,7 +183,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.djk.manager.single.model.BhSysUserOrgInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.jb.manager.single.model.BhSysUserOrgInfo" >
     update bh_sys_user_org_info
     <set >
       <if test="orgName != null" >
@@ -201,7 +201,7 @@
     </set>
     where org_id = #{orgId,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dcits.djk.manager.single.model.BhSysUserOrgInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.dcits.jb.manager.single.model.BhSysUserOrgInfo" >
     update bh_sys_user_org_info
     set org_name = #{orgName,jdbcType=VARCHAR},
       org_parent_id = #{orgParentId,jdbcType=CHAR},

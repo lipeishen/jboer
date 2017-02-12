@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dcits.djk.manager.single.mapper.BhSysUserRoleInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhSysUserRoleInfo" >
+<mapper namespace="com.dcits.jb.manager.single.mapper.BhSysUserRoleInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.jb.manager.single.model.BhSysUserRoleInfo" >
     <id column="role_id" property="roleId" jdbcType="CHAR" />
     <result column="role_name" property="roleName" jdbcType="VARCHAR" />
     <result column="comments" property="comments" jdbcType="VARCHAR" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List" >
     role_id, role_name, comments
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleInfoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleInfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -92,19 +92,19 @@
     delete from bh_sys_user_role_info
     where role_id = #{roleId,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleInfoExample" >
+  <delete id="deleteByExample" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleInfoExample" >
     delete from bh_sys_user_role_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleInfo" >
+  <insert id="insert" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleInfo" >
     insert into bh_sys_user_role_info (role_id, role_name, comments
       )
     values (#{roleId,jdbcType=CHAR}, #{roleName,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleInfo" >
+  <insert id="insertSelective" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleInfo" >
     insert into bh_sys_user_role_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="roleId != null" >
@@ -129,7 +129,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleInfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleInfoExample" resultType="java.lang.Integer" >
     select count(*) from bh_sys_user_role_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -161,7 +161,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleInfo" >
     update bh_sys_user_role_info
     <set >
       <if test="roleName != null" >
@@ -173,7 +173,7 @@
     </set>
     where role_id = #{roleId,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dcits.djk.manager.single.model.BhSysUserRoleInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.dcits.jb.manager.single.model.BhSysUserRoleInfo" >
     update bh_sys_user_role_info
     set role_name = #{roleName,jdbcType=VARCHAR},
       comments = #{comments,jdbcType=VARCHAR}

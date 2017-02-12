@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dcits.djk.manager.single.mapper.BhAuthUserMainMapper" >
-  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhAuthUserMain" >
+<mapper namespace="com.dcits.jb.manager.single.mapper.BhAuthUserMainMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.jb.manager.single.model.BhAuthUserMain" >
     <id column="user_id" property="userId" jdbcType="CHAR" />
     <result column="surname" property="surname" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -86,7 +86,7 @@
     tel_number, tel_tran_code, addr_province, addr_city, addr_county, addr_area, addr_detail, 
     email, sex, birthday, create_date, modify_date, head_portrait
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMainExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.jb.manager.single.model.BhAuthUserMainExample" >
     select
     <if test="distinct" >
       distinct
@@ -111,13 +111,13 @@
     delete from bh_auth_user_main
     where user_id = #{userId,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMainExample" >
+  <delete id="deleteByExample" parameterType="com.dcits.jb.manager.single.model.BhAuthUserMainExample" >
     delete from bh_auth_user_main
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMain" >
+  <insert id="insert" parameterType="com.dcits.jb.manager.single.model.BhAuthUserMain" >
     insert into bh_auth_user_main (user_id, surname, name, 
       identification_type, identification_num, mobile_phone, 
       tel_area_code, tel_number, tel_tran_code, 
@@ -133,7 +133,7 @@
       #{sex,jdbcType=CHAR}, #{birthday,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{modifyDate,jdbcType=TIMESTAMP}, #{headPortrait,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMain" >
+  <insert id="insertSelective" parameterType="com.dcits.jb.manager.single.model.BhAuthUserMain" >
     insert into bh_auth_user_main
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -260,7 +260,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMainExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.dcits.jb.manager.single.model.BhAuthUserMainExample" resultType="java.lang.Integer" >
     select count(*) from bh_auth_user_main
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -360,7 +360,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMain" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.jb.manager.single.model.BhAuthUserMain" >
     update bh_auth_user_main
     <set >
       <if test="surname != null" >
@@ -423,7 +423,7 @@
     </set>
     where user_id = #{userId,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dcits.djk.manager.single.model.BhAuthUserMain" >
+  <update id="updateByPrimaryKey" parameterType="com.dcits.jb.manager.single.model.BhAuthUserMain" >
     update bh_auth_user_main
     set surname = #{surname,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},

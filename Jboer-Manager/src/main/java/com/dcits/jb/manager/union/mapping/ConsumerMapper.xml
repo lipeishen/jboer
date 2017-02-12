@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dcits.djk.manager.union.mapper.ConsumerMapper" >
+<mapper namespace="com.dcits.jb.manager.union.mapper.ConsumerMapper" >
    <sql id="Base_Column_List" >
     user_id, surname, name, identification_type, identification_num, mobile_phone, tel_area_code, 
     tel_number, tel_tran_code, addr_province, addr_city, addr_county, addr_area, addr_detail, 

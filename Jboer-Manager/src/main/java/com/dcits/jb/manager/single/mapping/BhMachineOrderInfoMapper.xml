@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dcits.djk.manager.single.mapper.BhMachineOrderInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhMachineOrderInfo" >
+<mapper namespace="com.dcits.jb.manager.single.mapper.BhMachineOrderInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.jb.manager.single.model.BhMachineOrderInfo" >
     <id column="machine_order_id" property="machineOrderId" jdbcType="CHAR" />
     <result column="machine_order_type" property="machineOrderType" jdbcType="CHAR" />
     <result column="machine_order_num" property="machineOrderNum" jdbcType="CHAR" />
@@ -74,7 +74,7 @@
     machine_order_id, machine_order_type, machine_order_num, machine_id, user_id, machine_order_create_time, 
     machine_order_quantity, machine_order_amount, machine_order_status
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.jb.manager.single.model.BhMachineOrderInfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -99,13 +99,13 @@
     delete from bh_machine_order_info
     where machine_order_id = #{machineOrderId,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfoExample" >
+  <delete id="deleteByExample" parameterType="com.dcits.jb.manager.single.model.BhMachineOrderInfoExample" >
     delete from bh_machine_order_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfo" >
+  <insert id="insert" parameterType="com.dcits.jb.manager.single.model.BhMachineOrderInfo" >
     insert into bh_machine_order_info (machine_order_id, machine_order_type, machine_order_num, 
       machine_id, user_id, machine_order_create_time, 
       machine_order_quantity, machine_order_amount, 
@@ -115,7 +115,7 @@
       #{machineOrderQuantity,jdbcType=BIGINT}, #{machineOrderAmount,jdbcType=DECIMAL}, 
       #{machineOrderStatus,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfo" >
+  <insert id="insertSelective" parameterType="com.dcits.jb.manager.single.model.BhMachineOrderInfo" >
     insert into bh_machine_order_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="machineOrderId != null" >
@@ -176,7 +176,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.dcits.jb.manager.single.model.BhMachineOrderInfoExample" resultType="java.lang.Integer" >
     select count(*) from bh_machine_order_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -232,7 +232,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.jb.manager.single.model.BhMachineOrderInfo" >
     update bh_machine_order_info
     <set >
       <if test="machineOrderType != null" >
@@ -262,7 +262,7 @@
     </set>
     where machine_order_id = #{machineOrderId,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dcits.djk.manager.single.model.BhMachineOrderInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.dcits.jb.manager.single.model.BhMachineOrderInfo" >
     update bh_machine_order_info
     set machine_order_type = #{machineOrderType,jdbcType=CHAR},
       machine_order_num = #{machineOrderNum,jdbcType=CHAR},

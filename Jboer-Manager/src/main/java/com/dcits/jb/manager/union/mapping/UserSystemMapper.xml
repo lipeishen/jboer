@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dcits.djk.manager.union.mapper.UserSystemMapper">
+<mapper namespace="com.dcits.jb.manager.union.mapper.UserSystemMapper">
 	<resultMap id="ModularResultMap"
-		type="com.dcits.djk.manager.single.model.BhSysUserModularInfo">
+		type="com.dcits.jb.manager.single.model.BhSysUserModularInfo">
 		<id column="modular_id" property="modularId" jdbcType="CHAR" />
 		<result column="modular_name" property="modularName" jdbcType="VARCHAR" />
 		<result column="modular_parent_id" property="modularParentId"
@@ -96,7 +96,7 @@
 	</select>
 
 	<resultMap id="RoleInfoResultMap"
-		type="com.dcits.djk.manager.single.model.BhSysUserRoleInfo">
+		type="com.dcits.jb.manager.single.model.BhSysUserRoleInfo">
 		<id column="role_id" property="roleId" jdbcType="CHAR" />
 		<result column="role_name" property="roleName" jdbcType="VARCHAR" />
 		<result column="comments" property="comments" jdbcType="VARCHAR" />
@@ -113,19 +113,19 @@
 	</select>
 	<!-- lips  begin -->
 	<resultMap id="PostInfoResultMap"
-		type="com.dcits.djk.manager.single.model.BhSysUserPostInfo">
+		type="com.dcits.jb.manager.single.model.BhSysUserPostInfo">
 		<id column="post_id" property="postId" jdbcType="CHAR" />
 		<result column="post_name" property="postName" jdbcType="VARCHAR" />
 		<result column="comments" property="comments" jdbcType="VARCHAR" />
 	</resultMap>
-	<resultMap id="PostRoleBaseResultMap" type="com.dcits.djk.manager.vo.PostRoleDataLevel" >
+	<resultMap id="PostRoleBaseResultMap" type="com.dcits.jb.manager.vo.PostRoleDataLevel" >
     <result column="post_id" property="postId" jdbcType="CHAR" />
     <result column="post_name" property="postName" jdbcType="VARCHAR" />
     <result column="role_id" property="roleId" jdbcType="CHAR" />
     <result column="role_name" property="roleName" jdbcType="VARCHAR" />
     <result column="date_level" property="dateLevel" jdbcType="CHAR" />
   </resultMap>
-  <resultMap id="PRBaseResultMap" type="com.dcits.djk.manager.single.model.BhSysUserPostRole" >
+  <resultMap id="PRBaseResultMap" type="com.dcits.jb.manager.single.model.BhSysUserPostRole" >
     <id column="post_role_id" property="postRoleId" jdbcType="CHAR" />
     <result column="post_id" property="postId" jdbcType="CHAR" />
     <result column="role_id" property="roleId" jdbcType="CHAR" />
@@ -248,7 +248,7 @@
 	</select>
 	<!-- lijufa start -->
 	<resultMap id="orgBaseResultMap"
-		type="com.dcits.djk.manager.single.model.BhSysUserOrgInfo">
+		type="com.dcits.jb.manager.single.model.BhSysUserOrgInfo">
 		<id column="org_id" property="orgId" jdbcType="CHAR" />
 		<result column="org_name" property="orgName" jdbcType="VARCHAR" />
 		<result column="org_parent_id" property="orgParentId" jdbcType="CHAR" />
@@ -348,7 +348,7 @@
 	</select>
 
 	<select id="getCountUser" resultType="java.lang.Integer"
-		parameterType="com.dcits.djk.manager.single.model.BhSysUserLoginInfo">
+		parameterType="com.dcits.jb.manager.single.model.BhSysUserLoginInfo">
 		select count(1) from bh_sys_user_login_info t
 		where 1=1
 		<if test="name !=null and name != ''">
@@ -369,7 +369,7 @@
 		</if>
 	</select>
 
-	<select id="getOrgs" resultType="java.util.HashMap" parameterType="com.dcits.djk.manager.single.model.BhSysUserLoginInfoExample" >
+	<select id="getOrgs" resultType="java.util.HashMap" parameterType="com.dcits.jb.manager.single.model.BhSysUserLoginInfoExample" >
 		select * from
 		bh_sys_user_org_info
 		<if test="_parameter != null" >

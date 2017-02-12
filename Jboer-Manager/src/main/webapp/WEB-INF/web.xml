@@ -68,7 +68,7 @@
 	
 	<filter>
       <filter-name>characterCheckFilter</filter-name>
-      <filter-class>com.dcits.djk.manager.filter.CharacterCheckFilter</filter-class>
+      <filter-class>com.dcits.jb.manager.filter.CharacterCheckFilter</filter-class>
     </filter>
     <filter-mapping>
       <filter-name>characterCheckFilter</filter-name>

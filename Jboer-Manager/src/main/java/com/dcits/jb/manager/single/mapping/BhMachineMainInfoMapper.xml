@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dcits.djk.manager.single.mapper.BhMachineMainInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.dcits.djk.manager.single.model.BhMachineMainInfo" >
+<mapper namespace="com.dcits.jb.manager.single.mapper.BhMachineMainInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.jb.manager.single.model.BhMachineMainInfo" >
     <id column="machine_id" property="machineId" jdbcType="CHAR" />
     <result column="machine_type" property="machineType" jdbcType="CHAR" />
     <result column="machine_name" property="machineName" jdbcType="VARCHAR" />
@@ -79,7 +79,7 @@
     machine_stock_total, machine_stock_remain, machine_create_time, machine_issale, machine_isvalid, 
     machine_mac, machine_hasvoice
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.jb.manager.single.model.BhMachineMainInfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -104,13 +104,13 @@
     delete from bh_machine_main_info
     where machine_id = #{machineId,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfoExample" >
+  <delete id="deleteByExample" parameterType="com.dcits.jb.manager.single.model.BhMachineMainInfoExample" >
     delete from bh_machine_main_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfo" >
+  <insert id="insert" parameterType="com.dcits.jb.manager.single.model.BhMachineMainInfo" >
     insert into bh_machine_main_info (machine_id, machine_type, machine_name, 
       machine_code, machine_pic_url, machine_price, 
       machine_stock_total, machine_stock_remain, machine_create_time, 
@@ -122,7 +122,7 @@
       #{machineIssale,jdbcType=CHAR}, #{machineIsvalid,jdbcType=CHAR}, #{machineMac,jdbcType=CHAR}, 
       #{machineHasvoice,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfo" >
+  <insert id="insertSelective" parameterType="com.dcits.jb.manager.single.model.BhMachineMainInfo" >
     insert into bh_machine_main_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="machineId != null" >
@@ -207,7 +207,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.dcits.jb.manager.single.model.BhMachineMainInfoExample" resultType="java.lang.Integer" >
     select count(*) from bh_machine_main_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -279,7 +279,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.jb.manager.single.model.BhMachineMainInfo" >
     update bh_machine_main_info
     <set >
       <if test="machineType != null" >
@@ -321,7 +321,7 @@
     </set>
     where machine_id = #{machineId,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dcits.djk.manager.single.model.BhMachineMainInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.dcits.jb.manager.single.model.BhMachineMainInfo" >
     update bh_machine_main_info
     set machine_type = #{machineType,jdbcType=CHAR},
       machine_name = #{machineName,jdbcType=VARCHAR},

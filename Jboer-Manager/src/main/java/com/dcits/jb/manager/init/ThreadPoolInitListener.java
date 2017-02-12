@@ -14,9 +14,9 @@ public class ThreadPoolInitListener implements InitializingBean {
 		RedisThreadPool.getInstance();
 		logger.debug("结束初始化缓存集群信息");*/
 		
-		logger.debug("开始初始化监控代理");
+		/*logger.debug("开始初始化监控代理");
 		MonitorThreadPool.getInstance();
-		logger.debug("开始初始化监控代理");
+		logger.debug("开始初始化监控代理");*/
 	}
 
 }

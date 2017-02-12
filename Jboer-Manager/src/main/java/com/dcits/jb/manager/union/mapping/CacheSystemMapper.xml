@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dcits.djk.manager.union.mapper.CacheSystemMapper">
+<mapper namespace="com.dcits.jb.manager.union.mapper.CacheSystemMapper">
 	<select id="getAllProvice" resultType="java.util.HashMap">
 		select * from bh_sys_dict_province t where t.is_valid = '1' order by t.province_code
 	</select>
