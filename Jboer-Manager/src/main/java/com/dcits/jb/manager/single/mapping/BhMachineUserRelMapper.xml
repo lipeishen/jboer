@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.jb.manager.single.mapper.BhMachineUserRelMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.jb.manager.single.model.BhMachineUserRel" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="machine_id" property="machine_id" jdbcType="CHAR" />
+    <result column="machine_mac" property="machine_mac" jdbcType="CHAR" />
+    <result column="userid" property="userId" jdbcType="CHAR" />
+    <result column="bind_date" property="bind_date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    id,machine_id,machine_mac,userid,bind_date
+    from bh_machine_user_rel
+    where userid = #{userId,jdbcType=CHAR}
+  </select>
+  
+  <insert id="insert" parameterType="com.dcits.jb.manager.single.model.BhMachineUserRel" >
+    insert into bh_machine_user_rel (id, machine_id, machine_mac, 
+      userid, bind_date)
+    values (#{id,jdbcType=CHAR}, #{machine_id,jdbcType=CHAR}, #{machine_mac,jdbcType=CHAR}, 
+      #{userId,jdbcType=CHAR}, #{bind_date,jdbcType=TIMESTAMP})
+  </insert> 
+  
+  <update id="updateByUserId" parameterType="com.dcits.jb.manager.single.model.BhMachineUserRel" >
+    update bh_machine_user_rel
+    set machine_id = #{machine_id,jdbcType=CHAR},
+      machine_mac = #{machine_mac,jdbcType=CHAR},
+      bind_date = #{bind_date,jdbcType=TIMESTAMP}
+    where userid = #{userId,jdbcType=CHAR}
+  </update>
+</mapper>
