@@ -45,7 +45,10 @@ public class TtsController {
 	  // 1.根据上传的文本，进行分词处理
 	  List<String> wordList=splitUtil.cutString(inputText);
 	  //2. 根据分词的结果，查询是否有需要购买的商品
-	  
+	  for (String string : wordList) {
+		  
+		
+	}
 	  
 	  
 	  
