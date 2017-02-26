@@ -10,7 +10,7 @@
 <link href="static/css/base.css" rel="stylesheet" />
 <script type="text/javascript" src="<%=path%>/static/js/jquery-2.2.0.min.js"></script>
 <meta charset="utf-8">
-<title>中国人寿大健康管理系统</title>
+<title>北京京铂儿科技业务管理系统</title>
 <style type="text/css">
 #bgDiv {
 	position: absolute;

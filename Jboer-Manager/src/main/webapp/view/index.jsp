@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>中国人寿大健康管理系统</title>
+<title>北京京铂儿科技业务管理系统</title>
 <style type="text/css">
 #bgDiv {
 	position: absolute;
@@ -162,7 +162,7 @@ function closeWaitingDiv(){
 }
 
 function toZgrs(){
-	window.open("http://www.jboer.com//");
+	window.open("http://www.jboer.com/");
 }
 
 var topTiltleToLeft = function(){
@@ -275,7 +275,7 @@ var topTiltleToRight = function(){
         </div>
         </c:forEach>
     </div>
-    <div class="footer">中国人寿保险股份有限公司 @ Copyright</div>
+    <div class="footer">北京京铂儿有限公司 @ Copyright</div>
 	<div id="bgDiv" style="display:none;"></div>
 </body>
 </html>
