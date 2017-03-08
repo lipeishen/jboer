@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.dcits.jb.manager.service.ApiService;
 import com.dcits.jb.manager.single.mapper.BhAuthUserMainMapper;
+import com.dcits.jb.manager.single.mapper.BhMachineUserRelMapper;
 import com.dcits.jb.manager.single.mapper.BhUserAuthLoginMapper;
 import com.dcits.jb.manager.single.model.BhAuthUserLogin;
 import com.dcits.jb.manager.single.model.BhAuthUserMain;
@@ -22,6 +23,8 @@ public class ApiServiceImpl implements ApiService {
     BhUserAuthLoginMapper bhAuthUserLoginMapper;
     @Autowired
     BhAuthUserMainMapper bhAuthUserMainMapper;
+    @Autowired
+    BhMachineUserRelMapper bhMachineUserRelMapper;
 
     @Override
     public BhAuthUserLogin getBhAuthUserLoginByLoginName(String loginName) {
@@ -49,13 +52,19 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public boolean SaveBhMachineUserRel(BhMachineUserRel bhMachineUserRel) {
         // TODO 自动生成的方法存根
-        return false;
+    	BhMachineUserRel bhMachineUser=bhMachineUserRelMapper.selectByUserId(bhMachineUserRel.getUserId());
+    	if(bhMachineUser==null){
+        return bhMachineUserRelMapper.insert(bhMachineUserRel)>1;
+    	}else
+    	{
+    		return bhMachineUserRelMapper.updateByUserId(bhMachineUserRel)>1;
+    	}
     }
 
     @Override
     public BhMachineUserRel getBhMachineUserRelByUserId(String userid) {
         // TODO 自动生成的方法存根
-        return null;
+        return bhMachineUserRelMapper.selectByUserId(userid);
     }
 
     @Override
