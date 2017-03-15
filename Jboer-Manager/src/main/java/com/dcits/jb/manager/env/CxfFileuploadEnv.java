@@ -1,4 +1,4 @@
-﻿package com.dcits.jb.manager.env;
+package com.dcits.jb.manager.env;
 
 import com.dcits.jb.core.util.PropertyUtil;
 
