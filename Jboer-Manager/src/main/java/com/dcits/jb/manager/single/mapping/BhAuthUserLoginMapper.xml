@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.jb.manager.single.mapper.BhUserAuthLoginMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.jb.manager.single.model.BhAuthUserLogin" >
+    <id column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="login_id" property="surname" jdbcType="CHAR" />
+    <result column="login_name" property="name" jdbcType="VARCHAR" />
+    <result column="login_pwd" property="identificationType" jdbcType="VARCHAR" />
+    <result column="login_way" property="identificationNum" jdbcType="CHAR" />
+    <result column="create_date" property="mobilePhone" jdbcType="TIMESTAMP" />
+    <result column="modify_date" property="telAreaCode" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <select id="selectByLoginName" resultMap="BaseResultMap" parameterType="String" >
+    select
+    	login_id,
+    	user_id,
+    	login_name,
+    	login_pwd,
+    	login_way,
+    	create_date,
+    	modify_date
+    from bh_auth_user_login
+    <where>
+    	login_name ${loginName}
+    </where>
+  </select>
+  
+  <insert id="insertBhAuthUserLogin" parameterType="com.dcits.jb.manager.single.model.BhAuthUserLogin">
+  	insert into 
+  		bh_auth_user_login (
+  		login_id, user_id,
+  		login_name, login_pwd,
+  		login_way, create_date,
+  		modify_date)
+  	values
+  		(#{bhAuthUserLogin.loginId}, #{bhAuthUserLogin.userId}, 
+  		#{bhAuthUserLogin.loginName}, #{bhAuthUserLogin.loginPwd},
+  		#{bhAuthUserLogin.loginPwd}, #{bhAuthUserLogin.createDate},
+  		#{bhAuthUserLogin.modifyDate})
+  		
+  </insert>
+  
+</mapper>

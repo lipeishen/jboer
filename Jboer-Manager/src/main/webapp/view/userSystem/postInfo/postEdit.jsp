@@ -1,5 +1,5 @@
-<%@page import="com.dcits.djk.manager.vo.PostRoleDataLevel"%>
-<%@page import="com.dcits.djk.manager.single.model.BhSysUserRoleInfo"%>
+<%@page import="com.dcits.jb.manager.vo.PostRoleDataLevel"%>
+<%@page import="com.dcits.jb.manager.single.model.BhSysUserRoleInfo"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
