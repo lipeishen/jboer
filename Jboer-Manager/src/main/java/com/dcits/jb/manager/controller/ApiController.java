@@ -50,10 +50,12 @@ public class ApiController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/Register", method = RequestMethod.POST)
+    @RequestMapping(value = "/Register", method = RequestMethod.GET)
     @ResponseBody
     public String customerRegister(
-            HttpServletRequest request, String phoneNum, String loginPwd) throws Exception {
+            HttpServletRequest request) throws Exception {
+    	String phoneNum = "1337171773075";
+    	String loginPwd = "1111111";
         //如有验证逻辑，如需要验证短信验证码等，则按业务逻辑进行验证
         //判断客户名（手机号）是否存在
         BhAuthUserLogin bhAuthUserLogin = this.apiService.getBhAuthUserLoginByLoginName(phoneNum);
@@ -101,7 +103,7 @@ public class ApiController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/Login", method = RequestMethod.POST)
+    @RequestMapping(value = "/Login", method = RequestMethod.GET)
     @ResponseBody
     public String customerLogin(
             HttpServletRequest request, String phoneNum, String loginPwd
@@ -142,7 +144,7 @@ public class ApiController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/Bind", method = RequestMethod.POST)
+    @RequestMapping(value = "/Bind", method = RequestMethod.GET)
     @ResponseBody
     public String customerBind(HttpServletRequest request, String userId, String hardwareID, String hardwareMac) throws Exception {
         ResponseMap = new HashMap<String, Object>();
@@ -188,7 +190,7 @@ public class ApiController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/UserInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/UserInfo", method = RequestMethod.GET)
     @ResponseBody
     public String customerUserMainInfo(HttpServletRequest request, String userId) throws Exception {
         ResponseMap = new HashMap<String, Object>();
