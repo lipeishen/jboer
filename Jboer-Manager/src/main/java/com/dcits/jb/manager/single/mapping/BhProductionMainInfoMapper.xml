@@ -5,13 +5,13 @@
     <id column="production_id" property="productionId" jdbcType="CHAR" />
     <result column="production_name" property="productionName" jdbcType="VARCHAR" />
     <result column="production_type" property="productionType" jdbcType="CHAR" />
+    <result column="production_code" property="productionCode" jdbcType="VARCHAR" />
     <result column="production_pic_url" property="productionPicUrl" jdbcType="VARCHAR" />
     <result column="production_price" property="productionPrice" jdbcType="DOUBLE" />
     <result column="production_size" property="productionSize" jdbcType="VARCHAR" />
     <result column="production_color" property="productionColor" jdbcType="CHAR" />
     <result column="prodction_usage" property="prodctionUsage" jdbcType="VARCHAR" />
     <result column="production_material" property="productionMaterial" jdbcType="VARCHAR" />
-    <result column="production_stock_total" property="productionStockTotal" jdbcType="BIGINT" />
     <result column="production_stock_remain" property="productionStockRemain" jdbcType="BIGINT" />
     <result column="production_create_time" property="productionCreateTime" jdbcType="DATE" />
     <result column="production_isself" property="productionIsself" jdbcType="CHAR" />
@@ -19,6 +19,8 @@
     <result column="production_invalid_time" property="productionInvalidTime" jdbcType="DATE" />
     <result column="production_issale" property="productionIssale" jdbcType="CHAR" />
     <result column="production_isvalid" property="productionIsvalid" jdbcType="CHAR" />
+    <result column="import_time" property="importTime" jdbcType="TIMESTAMP" />
+    <result column="import_person" property="importPerson" jdbcType="VARCHAR" />
     <result column="production_desc" property="productionDesc" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -80,10 +82,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    production_id, production_name, production_type, production_pic_url, production_price, 
-    production_size, production_color, prodction_usage, production_material, production_stock_total, 
+    production_id, production_name, production_type, production_code, production_pic_url, 
+    production_price, production_size, production_color, prodction_usage, production_material, 
     production_stock_remain, production_create_time, production_isself, production_source, 
-    production_invalid_time, production_issale, production_isvalid, production_desc
+    production_invalid_time, production_issale, production_isvalid, import_time, import_person, 
+    production_desc
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dcits.jb.manager.single.model.BhProductionMainInfoExample" >
     select
@@ -118,19 +121,21 @@
   </delete>
   <insert id="insert" parameterType="com.dcits.jb.manager.single.model.BhProductionMainInfo" >
     insert into bh_production_main_info (production_id, production_name, production_type, 
-      production_pic_url, production_price, production_size, 
-      production_color, prodction_usage, production_material, 
-      production_stock_total, production_stock_remain, 
+      production_code, production_pic_url, production_price, 
+      production_size, production_color, prodction_usage, 
+      production_material, production_stock_remain, 
       production_create_time, production_isself, production_source, 
       production_invalid_time, production_issale, production_isvalid, 
-      production_desc)
+      import_time, import_person, production_desc
+      )
     values (#{productionId,jdbcType=CHAR}, #{productionName,jdbcType=VARCHAR}, #{productionType,jdbcType=CHAR}, 
-      #{productionPicUrl,jdbcType=VARCHAR}, #{productionPrice,jdbcType=DOUBLE}, #{productionSize,jdbcType=VARCHAR}, 
-      #{productionColor,jdbcType=CHAR}, #{prodctionUsage,jdbcType=VARCHAR}, #{productionMaterial,jdbcType=VARCHAR}, 
-      #{productionStockTotal,jdbcType=BIGINT}, #{productionStockRemain,jdbcType=BIGINT}, 
+      #{productionCode,jdbcType=VARCHAR}, #{productionPicUrl,jdbcType=VARCHAR}, #{productionPrice,jdbcType=DOUBLE}, 
+      #{productionSize,jdbcType=VARCHAR}, #{productionColor,jdbcType=CHAR}, #{prodctionUsage,jdbcType=VARCHAR}, 
+      #{productionMaterial,jdbcType=VARCHAR}, #{productionStockRemain,jdbcType=BIGINT}, 
       #{productionCreateTime,jdbcType=DATE}, #{productionIsself,jdbcType=CHAR}, #{productionSource,jdbcType=CHAR}, 
       #{productionInvalidTime,jdbcType=DATE}, #{productionIssale,jdbcType=CHAR}, #{productionIsvalid,jdbcType=CHAR}, 
-      #{productionDesc,jdbcType=VARCHAR})
+      #{importTime,jdbcType=TIMESTAMP}, #{importPerson,jdbcType=VARCHAR}, #{productionDesc,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.dcits.jb.manager.single.model.BhProductionMainInfo" >
     insert into bh_production_main_info
@@ -143,6 +148,9 @@
       </if>
       <if test="productionType != null" >
         production_type,
+      </if>
+      <if test="productionCode != null" >
+        production_code,
       </if>
       <if test="productionPicUrl != null" >
         production_pic_url,
@@ -161,9 +169,6 @@
       </if>
       <if test="productionMaterial != null" >
         production_material,
-      </if>
-      <if test="productionStockTotal != null" >
-        production_stock_total,
       </if>
       <if test="productionStockRemain != null" >
         production_stock_remain,
@@ -186,6 +191,12 @@
       <if test="productionIsvalid != null" >
         production_isvalid,
       </if>
+      <if test="importTime != null" >
+        import_time,
+      </if>
+      <if test="importPerson != null" >
+        import_person,
+      </if>
       <if test="productionDesc != null" >
         production_desc,
       </if>
@@ -199,6 +210,9 @@
       </if>
       <if test="productionType != null" >
         #{productionType,jdbcType=CHAR},
+      </if>
+      <if test="productionCode != null" >
+        #{productionCode,jdbcType=VARCHAR},
       </if>
       <if test="productionPicUrl != null" >
         #{productionPicUrl,jdbcType=VARCHAR},
@@ -217,9 +231,6 @@
       </if>
       <if test="productionMaterial != null" >
         #{productionMaterial,jdbcType=VARCHAR},
-      </if>
-      <if test="productionStockTotal != null" >
-        #{productionStockTotal,jdbcType=BIGINT},
       </if>
       <if test="productionStockRemain != null" >
         #{productionStockRemain,jdbcType=BIGINT},
@@ -241,6 +252,12 @@
       </if>
       <if test="productionIsvalid != null" >
         #{productionIsvalid,jdbcType=CHAR},
+      </if>
+      <if test="importTime != null" >
+        #{importTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importPerson != null" >
+        #{importPerson,jdbcType=VARCHAR},
       </if>
       <if test="productionDesc != null" >
         #{productionDesc,jdbcType=VARCHAR},
@@ -265,6 +282,9 @@
       <if test="record.productionType != null" >
         production_type = #{record.productionType,jdbcType=CHAR},
       </if>
+      <if test="record.productionCode != null" >
+        production_code = #{record.productionCode,jdbcType=VARCHAR},
+      </if>
       <if test="record.productionPicUrl != null" >
         production_pic_url = #{record.productionPicUrl,jdbcType=VARCHAR},
       </if>
@@ -282,9 +302,6 @@
       </if>
       <if test="record.productionMaterial != null" >
         production_material = #{record.productionMaterial,jdbcType=VARCHAR},
-      </if>
-      <if test="record.productionStockTotal != null" >
-        production_stock_total = #{record.productionStockTotal,jdbcType=BIGINT},
       </if>
       <if test="record.productionStockRemain != null" >
         production_stock_remain = #{record.productionStockRemain,jdbcType=BIGINT},
@@ -307,6 +324,12 @@
       <if test="record.productionIsvalid != null" >
         production_isvalid = #{record.productionIsvalid,jdbcType=CHAR},
       </if>
+      <if test="record.importTime != null" >
+        import_time = #{record.importTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.importPerson != null" >
+        import_person = #{record.importPerson,jdbcType=VARCHAR},
+      </if>
       <if test="record.productionDesc != null" >
         production_desc = #{record.productionDesc,jdbcType=VARCHAR},
       </if>
@@ -320,13 +343,13 @@
     set production_id = #{record.productionId,jdbcType=CHAR},
       production_name = #{record.productionName,jdbcType=VARCHAR},
       production_type = #{record.productionType,jdbcType=CHAR},
+      production_code = #{record.productionCode,jdbcType=VARCHAR},
       production_pic_url = #{record.productionPicUrl,jdbcType=VARCHAR},
       production_price = #{record.productionPrice,jdbcType=DOUBLE},
       production_size = #{record.productionSize,jdbcType=VARCHAR},
       production_color = #{record.productionColor,jdbcType=CHAR},
       prodction_usage = #{record.prodctionUsage,jdbcType=VARCHAR},
       production_material = #{record.productionMaterial,jdbcType=VARCHAR},
-      production_stock_total = #{record.productionStockTotal,jdbcType=BIGINT},
       production_stock_remain = #{record.productionStockRemain,jdbcType=BIGINT},
       production_create_time = #{record.productionCreateTime,jdbcType=DATE},
       production_isself = #{record.productionIsself,jdbcType=CHAR},
@@ -334,6 +357,8 @@
       production_invalid_time = #{record.productionInvalidTime,jdbcType=DATE},
       production_issale = #{record.productionIssale,jdbcType=CHAR},
       production_isvalid = #{record.productionIsvalid,jdbcType=CHAR},
+      import_time = #{record.importTime,jdbcType=TIMESTAMP},
+      import_person = #{record.importPerson,jdbcType=VARCHAR},
       production_desc = #{record.productionDesc,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -347,6 +372,9 @@
       </if>
       <if test="productionType != null" >
         production_type = #{productionType,jdbcType=CHAR},
+      </if>
+      <if test="productionCode != null" >
+        production_code = #{productionCode,jdbcType=VARCHAR},
       </if>
       <if test="productionPicUrl != null" >
         production_pic_url = #{productionPicUrl,jdbcType=VARCHAR},
@@ -365,9 +393,6 @@
       </if>
       <if test="productionMaterial != null" >
         production_material = #{productionMaterial,jdbcType=VARCHAR},
-      </if>
-      <if test="productionStockTotal != null" >
-        production_stock_total = #{productionStockTotal,jdbcType=BIGINT},
       </if>
       <if test="productionStockRemain != null" >
         production_stock_remain = #{productionStockRemain,jdbcType=BIGINT},
@@ -390,6 +415,12 @@
       <if test="productionIsvalid != null" >
         production_isvalid = #{productionIsvalid,jdbcType=CHAR},
       </if>
+      <if test="importTime != null" >
+        import_time = #{importTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importPerson != null" >
+        import_person = #{importPerson,jdbcType=VARCHAR},
+      </if>
       <if test="productionDesc != null" >
         production_desc = #{productionDesc,jdbcType=VARCHAR},
       </if>
@@ -400,13 +431,13 @@
     update bh_production_main_info
     set production_name = #{productionName,jdbcType=VARCHAR},
       production_type = #{productionType,jdbcType=CHAR},
+      production_code = #{productionCode,jdbcType=VARCHAR},
       production_pic_url = #{productionPicUrl,jdbcType=VARCHAR},
       production_price = #{productionPrice,jdbcType=DOUBLE},
       production_size = #{productionSize,jdbcType=VARCHAR},
       production_color = #{productionColor,jdbcType=CHAR},
       prodction_usage = #{prodctionUsage,jdbcType=VARCHAR},
       production_material = #{productionMaterial,jdbcType=VARCHAR},
-      production_stock_total = #{productionStockTotal,jdbcType=BIGINT},
       production_stock_remain = #{productionStockRemain,jdbcType=BIGINT},
       production_create_time = #{productionCreateTime,jdbcType=DATE},
       production_isself = #{productionIsself,jdbcType=CHAR},
@@ -414,6 +445,8 @@
       production_invalid_time = #{productionInvalidTime,jdbcType=DATE},
       production_issale = #{productionIssale,jdbcType=CHAR},
       production_isvalid = #{productionIsvalid,jdbcType=CHAR},
+      import_time = #{importTime,jdbcType=TIMESTAMP},
+      import_person = #{importPerson,jdbcType=VARCHAR},
       production_desc = #{productionDesc,jdbcType=VARCHAR}
     where production_id = #{productionId,jdbcType=CHAR}
   </update>

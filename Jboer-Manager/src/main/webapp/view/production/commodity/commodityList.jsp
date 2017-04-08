@@ -47,81 +47,85 @@ $(document).ready(function(){
 		pagePosition:"bottom",pageNumber:1,pageSize:10,pageList:[10,20],striped:"true",fitColumns:"true",nowrap:true,singleSelect:"true",
 		rownumbers:true,border:true,idField:"id",height:435,
 		columns:[ [
- 			{title:"商品名称",field:"productionName",width:"10%",align:"center"},
-			{title:"商品类型",field:"productionType",width:"10%",align:"center"},
-			{title:"库存总量",field:"productionStockTotal",width:"5%",align:"center"},
-			{title:"剩余库存",field:"productionStockRemain",width:"5%",align:"center"},
-			{title:"生产时间",field:"productionCreateTime",width:"10%",align:"center"},
-			{title:"失效时间",field:"productionInvalidTime",width:"10%",align:"center"},
-			{title:"是否自有",field:"productionIsself",width:"10%",align:"center"},
-			{title:"商品价格",field:"productionPrice",width:"5%",align:"center"},
-			{title:"是否促销",field:"productionIssale",width:"10%",align:"center"},
-			{title:"商品来源",field:"productionSource",width:"10%",align:"center"},
-			{title:"操作",field:"productionId",width:"15%",align:"center",
+ 			{title:"商品名称",field:"production_name",width:"15%",align:"center"},
+			{title:"商品类型",field:"production_type",width:"15%",align:"center",
 				formatter:function(value, rowData,rowIndex) {
-					var durationRecordStatus = rowData.duration_record_status;
-					var durationRecordId = "\""+rowData.duration_record_id+"\"";
-					var center_name = "\""+rowData.center_name+"\"";
-					var examination_date = "\""+rowData.examination_date+"\"";
-					var duration_name = "\""+rowData.duration_name+"\"";
-					var duration_cur_capacity = "\""+rowData.duration_cur_capacity+"\"";
-					var htmlView = "";
-					if(durationRecordStatus == 1){
-						htmlView = "<a href='javascript:void(0)' onclick='stopDurationRecord("+durationRecordId+")'>停用</a>";
+					var retrunValue ="";
+					if(value == "0"){
+						retrunValue = "蔬菜类";
+					}else if(value == "1"){
+						retrunValue = "水果类";
+					}else if(value == "2"){
+						retrunValue = "肉类";
+					}else if(value == "3"){
+						retrunValue = "奶制品";
+					}else if(value == "4"){
+						retrunValue = "蛋类";
+					}
+					return retrunValue;
+				}},
+			{title:"剩余库存",field:"production_stock_remain",width:"10%",align:"center"},
+			{title:"是否自有",field:"production_isself",width:"10%",align:"center",
+				formatter:function(value, rowData,rowIndex) {
+					var retrunValue ="";
+					if(value == "1"){
+						retrunValue = "是";
+					}else if(value == "0"){
+						retrunValue = "否";
+					}
+					return retrunValue;
+				}},
+			{title:"商品价格",field:"production_price",width:"10%",align:"center"},
+			{title:"是否促销",field:"production_issale",width:"10%",align:"center",
+				formatter:function(value, rowData,rowIndex) {
+					var retrunValue ="";
+					if(value == "1"){
+						retrunValue = "是";
+					}else if(value == "0"){
+						retrunValue = "否";
+					}
+					return retrunValue;
+				}},
+			{title:"商品来源",field:"production_source",width:"15%",align:"center",
+				formatter:function(value, rowData,rowIndex) {
+					var retrunValue ="";
+					if(value == "1"){
+						retrunValue = "彩虹";
 					}else{
-						htmlView = "<a href='javascript:void(0)' onclick='stopDurationRecord("+durationRecordId+")'>启用</a>";
+						retrunValue = "其他供应商";
 					}
-					var htmlEdit="";
-					if(durationRecordStatus == 1){
-						htmlEdit = "<a href='javascript:void(0)' onclick='editDurationRecord("+durationRecordId+","+center_name+","+examination_date+","+duration_name+","+duration_cur_capacity+")'>编辑</a>";
-					}
-					return htmlView +"&nbsp&nbsp"+htmlEdit;
-				}
+					return retrunValue;
+				}},
+			{title:"操作",field:"productionId",width:"15%",align:"center",
 			} 
 		] ]
 	});
 });
-var stopDurationRecord = function(durationRecordId){
-	$.ajax({
-		 url:"<%=path%>/examManage/examSchedule/updateDurationRecordToStop.do",    //请求的url地址
-		 dataType:"json",   //返回格式为json
-		 async:false,//请求是否异步，默认为异步，这也是ajax重要特性
-		 data:{"durationRecordId":durationRecordId},    //参数值
-		 type:"POST",   //请求方式
-	     success:function(data){
-	    	 if(data.success){
-	    		 $.messager.alert("系统提示","操作成功");
-	    		 $('#datagrid').datagrid('load');
-	    	 }else if(data.fail){
-	    		 $.messager.alert("系统提示",data.fail);
-	    	 } else{
-	    		 $.messager.alert("系统提示","操作失败");
-	    	 }
-	     },
-	     error:function(){
-	        //请求出错处理
-	        alert("有错误，请处理！");
-	     }
-	});
-}
-var queryExamItemTypeList = function(){
-	var areaId=$('#area_id').combobox('getValue');
-	var center_name=$('#center_name').val();
-	var examination_date = $("#examination_date").datebox("getValue");
+var queryproductList = function(){
+	var productionName=$('#production_name').val();
+	var productionType=$('#production_type').val();
+	var productionIsself=$('#production_isself').val();
+	var productionIssale=$('#production_issale').val();
+	var productionSource=$('#production_source').val();
 	$('#datagrid').datagrid('load',{
-		areaId :areaId,
-		centerName:center_name,
-		examinationDate:examination_date
+		proname :productionName,
+		protype:productionType,
+		isself:productionIsself,
+		resouce:productionSource,
+		issale:productionIssale
+		
 	});
 }
 
 var clearAll = function(){
-	$('#area_id').combobox('setValue', '');
-	$("#center_name").val("");
-	 $("#examination_date").datebox("setValue","");
+	$('#production_name').val("");
+	$('#production_type').val("");
+	$('#production_isself').val("");
+	$('#production_issale').val("");
+	$('#production_source').val("");
 }
-var toImportSchedule=function(){
-	window.location.href="<%=path%>/examManage/examSchedule/toScheduleImport.do?modularId=${modularId}";
+var toImportProduct=function(){
+	window.location.href="<%=path%>/production/commodity/toProductImport.do?modularId=${modularId}";
 }
 var editDurationRecord = function(durationRecordId,center_name,examination_date,duration_name,duration_cur_capacity){
 	window.location.href="<%=path%>/examManage/examSchedule/toEditDurationRecord.do?durationRecordId="+durationRecordId+"&center_name="+center_name+"&examination_date="+examination_date+"&duration_name="+duration_name+"&duration_cur_capacity="+duration_cur_capacity+"&modularId=${modularId}";
@@ -164,23 +168,21 @@ var editDurationRecord = function(durationRecordId,center_name,examination_date,
 		<tr>
 		<td style="font-size: 12px;width: 30%;text-align:center;">
 				<span style="height:30px;vertical-align:middle;font-weight:bold;width:40%;text-align:right">商品来源:</span> 
-				<select class="easyui-select" name="productionIsself" id="production_isself"  style="width: 50%;height:35px;background:#fff ">
+				<select class="easyui-select" name="productionSource" id="production_source"  style="width: 50%;height:35px;background:#fff ">
 						<option value="">未选择</option>
-						<option value="0">供应商</option>
-						<option value="1">自有</option>
+						<option value="1">供应商</option>
+						<option value="0">自有</option>
 				</select>
 			</td>
-		 <td style="font-size: 12px;width:30%;text-align:center" class="date">
+		<!--  <td style="font-size: 12px;width:30%;text-align:center" class="date">
 				<span style="height:30px;vertical-align:middle;font-weight:bold;width:40%;text-align:right">生产日期:</span> 
 				<input id="production_createTime"  style="width: 50%;height:33px"  name="productionCreateTime" type="text" data-options="required:false,showSeconds:false,editable:false" class="easyui-datebox" panelHeight="auto"></input>
 			</td>
 			<td style="font-size: 12px;width:30%;text-align:center" class="date">
 				<span style="height:30px;vertical-align:middle;font-weight:bold;width:40%;text-align:right">失效日期:</span> 
 				<input id="production_invalidTime"  style="width: 50%;height:33px"  name="productionInvalidTime" type="text" data-options="required:false,showSeconds:false,editable:false" class="easyui-datebox" panelHeight="auto"></input>
-			</td>
-		</tr>
-		<tr>
-		 <td style="font-size: 12px;width: 30%;text-align:center;">
+			</td> -->
+			<td style="font-size: 12px;width: 30%;text-align:center;">
 				<span style="height:30px;vertical-align:middle;font-weight:bold;width:40%;text-align:right">是否促销:</span> 
 				<select class="easyui-select" name="productionIssale" id="production_issale"  style="width: 50%;height:35px;background:#fff ">
 						<option value="">未选择</option>
@@ -188,10 +190,11 @@ var editDurationRecord = function(durationRecordId,center_name,examination_date,
 						<option value="1">是 </option>
 				</select>
 			</td>
+			
 		</tr>
 		<tr>
 				<td style="font-size: 12px;width: 30%;text-align:center;" colspan="3">
-				<a href="javascript:void(0)" class="standard-button" onclick="queryExamItemTypeList()">查询</a>
+				<a href="javascript:void(0)" class="standard-button" onclick="queryproductList()">查询</a>
 				<a href="javascript:void(0)" class="standard-button" onclick="clearAll()">重置</a>
 				
 			</td>
@@ -205,7 +208,7 @@ var editDurationRecord = function(durationRecordId,center_name,examination_date,
 		<table style="width: 100%;margin-bottom:10px;">
 			<tr>
 				<td style="font-size: 12px;width: 30%;text-align:right;" colspan="2">
-					<a href="javascript:void(0)"   class="standard-button"  onclick="toImportSchedule()" >批量导入排班</a>
+					<a href="javascript:void(0)"   class="standard-button"  onclick="toImportProduct()" >批量导入商品</a>
 				</td>
 			</tr>
 		</table>

@@ -1,10 +1,9 @@
 package com.dcits.jb.manager.single.mapper;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 import com.dcits.jb.manager.single.model.BhProductionMainInfo;
 import com.dcits.jb.manager.single.model.BhProductionMainInfoExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface BhProductionMainInfoMapper {
     int countByExample(BhProductionMainInfoExample example);

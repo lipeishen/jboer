@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.jb.manager.union.mapper.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.dcits.jb.manager.single.model.BhProductionMainInfo" >
+    <id column="production_id" property="productionId" jdbcType="CHAR" />
+    <result column="production_name" property="productionName" jdbcType="VARCHAR" />
+    <result column="production_type" property="productionType" jdbcType="CHAR" />
+    <result column="production_code" property="productionCode" jdbcType="VARCHAR" />
+    <result column="production_pic_url" property="productionPicUrl" jdbcType="VARCHAR" />
+    <result column="production_price" property="productionPrice" jdbcType="DOUBLE" />
+    <result column="production_size" property="productionSize" jdbcType="VARCHAR" />
+    <result column="production_color" property="productionColor" jdbcType="CHAR" />
+    <result column="prodction_usage" property="prodctionUsage" jdbcType="VARCHAR" />
+    <result column="production_material" property="productionMaterial" jdbcType="VARCHAR" />
+    <result column="production_stock_remain" property="productionStockRemain" jdbcType="BIGINT" />
+    <result column="production_create_time" property="productionCreateTime" jdbcType="DATE" />
+    <result column="production_isself" property="productionIsself" jdbcType="CHAR" />
+    <result column="production_source" property="productionSource" jdbcType="CHAR" />
+    <result column="production_invalid_time" property="productionInvalidTime" jdbcType="DATE" />
+    <result column="production_issale" property="productionIssale" jdbcType="CHAR" />
+    <result column="production_isvalid" property="productionIsvalid" jdbcType="CHAR" />
+    <result column="import_time" property="importTime" jdbcType="TIMESTAMP" />
+    <result column="import_person" property="importPerson" jdbcType="VARCHAR" />
+    <result column="production_desc" property="productionDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    production_id, production_name, production_type, production_code, production_pic_url, 
+    production_price, production_size, production_color, prodction_usage, production_material, 
+    production_stock_remain, production_create_time, production_isself, production_source, 
+    production_invalid_time, production_issale, production_isvalid, import_time, import_person, 
+    production_desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bh_production_main_info
+    where production_id = #{productionId,jdbcType=CHAR}
+  </select>
+  <select id="getCountProListByConQuery" resultType="java.lang.Integer" >
+   select COUNT(1) from bh_production_main_info WHERE 1=1
+     <if test="proname != null and proname != ''" >
+       and production_name like #{proname}
+      </if>
+    <if test="protype != null and protype != ''" >
+       and production_type=#{protype}
+      </if>
+      <if test="isself != null and isself != ''" >
+       and production_isself=#{isself}
+      </if>
+      <if test="resouce != null and resouce != ''" >
+       and production_source=#{resouce}
+      </if>
+      <if test="issale != null and issale != ''" >
+       and production_issale=#{issale}
+      </if>
+  </select>
+  <select id="getProListByConQuery" resultType="java.util.HashMap" >
+   select * from bh_production_main_info WHERE 1=1
+     <if test="proname != null and proname != ''" >
+       and production_name like #{proname}
+      </if>
+    <if test="protype != null and protype != ''" >
+       and production_type=#{protype}
+      </if>
+      <if test="isself != null and isself != ''" >
+       and production_isself=#{isself}
+      </if>
+      <if test="resouce != null and resouce != ''" >
+       and production_source=#{resouce}
+      </if>
+      <if test="issale != null and issale != ''" >
+       and production_issale=#{issale}
+      </if>
+      order by import_time desc
+      limit #{page},#{rows}
+  </select>
+</mapper>

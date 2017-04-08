@@ -9,6 +9,8 @@ public class BhProductionMainInfo {
 
     private String productionType;
 
+    private String productionCode;
+
     private String productionPicUrl;
 
     private Double productionPrice;
@@ -20,8 +22,6 @@ public class BhProductionMainInfo {
     private String prodctionUsage;
 
     private String productionMaterial;
-
-    private Long productionStockTotal;
 
     private Long productionStockRemain;
 
@@ -36,6 +36,10 @@ public class BhProductionMainInfo {
     private String productionIssale;
 
     private String productionIsvalid;
+
+    private Date importTime;
+
+    private String importPerson;
 
     private String productionDesc;
 
@@ -61,6 +65,14 @@ public class BhProductionMainInfo {
 
     public void setProductionType(String productionType) {
         this.productionType = productionType == null ? null : productionType.trim();
+    }
+
+    public String getProductionCode() {
+        return productionCode;
+    }
+
+    public void setProductionCode(String productionCode) {
+        this.productionCode = productionCode == null ? null : productionCode.trim();
     }
 
     public String getProductionPicUrl() {
@@ -109,14 +121,6 @@ public class BhProductionMainInfo {
 
     public void setProductionMaterial(String productionMaterial) {
         this.productionMaterial = productionMaterial == null ? null : productionMaterial.trim();
-    }
-
-    public Long getProductionStockTotal() {
-        return productionStockTotal;
-    }
-
-    public void setProductionStockTotal(Long productionStockTotal) {
-        this.productionStockTotal = productionStockTotal;
     }
 
     public Long getProductionStockRemain() {
@@ -173,6 +177,22 @@ public class BhProductionMainInfo {
 
     public void setProductionIsvalid(String productionIsvalid) {
         this.productionIsvalid = productionIsvalid == null ? null : productionIsvalid.trim();
+    }
+
+    public Date getImportTime() {
+        return importTime;
+    }
+
+    public void setImportTime(Date importTime) {
+        this.importTime = importTime;
+    }
+
+    public String getImportPerson() {
+        return importPerson;
+    }
+
+    public void setImportPerson(String importPerson) {
+        this.importPerson = importPerson == null ? null : importPerson.trim();
     }
 
     public String getProductionDesc() {

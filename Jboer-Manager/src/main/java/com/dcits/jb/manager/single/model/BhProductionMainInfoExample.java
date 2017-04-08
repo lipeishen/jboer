@@ -342,6 +342,76 @@ public class BhProductionMainInfoExample {
             return (Criteria) this;
         }
 
+        public Criteria andProductionCodeIsNull() {
+            addCriterion("production_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeIsNotNull() {
+            addCriterion("production_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeEqualTo(String value) {
+            addCriterion("production_code =", value, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeNotEqualTo(String value) {
+            addCriterion("production_code <>", value, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeGreaterThan(String value) {
+            addCriterion("production_code >", value, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("production_code >=", value, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeLessThan(String value) {
+            addCriterion("production_code <", value, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeLessThanOrEqualTo(String value) {
+            addCriterion("production_code <=", value, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeLike(String value) {
+            addCriterion("production_code like", value, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeNotLike(String value) {
+            addCriterion("production_code not like", value, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeIn(List<String> values) {
+            addCriterion("production_code in", values, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeNotIn(List<String> values) {
+            addCriterion("production_code not in", values, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeBetween(String value1, String value2) {
+            addCriterion("production_code between", value1, value2, "productionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductionCodeNotBetween(String value1, String value2) {
+            addCriterion("production_code not between", value1, value2, "productionCode");
+            return (Criteria) this;
+        }
+
         public Criteria andProductionPicUrlIsNull() {
             addCriterion("production_pic_url is null");
             return (Criteria) this;
@@ -749,66 +819,6 @@ public class BhProductionMainInfoExample {
 
         public Criteria andProductionMaterialNotBetween(String value1, String value2) {
             addCriterion("production_material not between", value1, value2, "productionMaterial");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalIsNull() {
-            addCriterion("production_stock_total is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalIsNotNull() {
-            addCriterion("production_stock_total is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalEqualTo(Long value) {
-            addCriterion("production_stock_total =", value, "productionStockTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalNotEqualTo(Long value) {
-            addCriterion("production_stock_total <>", value, "productionStockTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalGreaterThan(Long value) {
-            addCriterion("production_stock_total >", value, "productionStockTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalGreaterThanOrEqualTo(Long value) {
-            addCriterion("production_stock_total >=", value, "productionStockTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalLessThan(Long value) {
-            addCriterion("production_stock_total <", value, "productionStockTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalLessThanOrEqualTo(Long value) {
-            addCriterion("production_stock_total <=", value, "productionStockTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalIn(List<Long> values) {
-            addCriterion("production_stock_total in", values, "productionStockTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalNotIn(List<Long> values) {
-            addCriterion("production_stock_total not in", values, "productionStockTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalBetween(Long value1, Long value2) {
-            addCriterion("production_stock_total between", value1, value2, "productionStockTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductionStockTotalNotBetween(Long value1, Long value2) {
-            addCriterion("production_stock_total not between", value1, value2, "productionStockTotal");
             return (Criteria) this;
         }
 
@@ -1269,6 +1279,136 @@ public class BhProductionMainInfoExample {
 
         public Criteria andProductionIsvalidNotBetween(String value1, String value2) {
             addCriterion("production_isvalid not between", value1, value2, "productionIsvalid");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeIsNull() {
+            addCriterion("import_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeIsNotNull() {
+            addCriterion("import_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeEqualTo(Date value) {
+            addCriterion("import_time =", value, "importTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeNotEqualTo(Date value) {
+            addCriterion("import_time <>", value, "importTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeGreaterThan(Date value) {
+            addCriterion("import_time >", value, "importTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("import_time >=", value, "importTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeLessThan(Date value) {
+            addCriterion("import_time <", value, "importTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeLessThanOrEqualTo(Date value) {
+            addCriterion("import_time <=", value, "importTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeIn(List<Date> values) {
+            addCriterion("import_time in", values, "importTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeNotIn(List<Date> values) {
+            addCriterion("import_time not in", values, "importTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeBetween(Date value1, Date value2) {
+            addCriterion("import_time between", value1, value2, "importTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportTimeNotBetween(Date value1, Date value2) {
+            addCriterion("import_time not between", value1, value2, "importTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonIsNull() {
+            addCriterion("import_person is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonIsNotNull() {
+            addCriterion("import_person is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonEqualTo(String value) {
+            addCriterion("import_person =", value, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonNotEqualTo(String value) {
+            addCriterion("import_person <>", value, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonGreaterThan(String value) {
+            addCriterion("import_person >", value, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonGreaterThanOrEqualTo(String value) {
+            addCriterion("import_person >=", value, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonLessThan(String value) {
+            addCriterion("import_person <", value, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonLessThanOrEqualTo(String value) {
+            addCriterion("import_person <=", value, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonLike(String value) {
+            addCriterion("import_person like", value, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonNotLike(String value) {
+            addCriterion("import_person not like", value, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonIn(List<String> values) {
+            addCriterion("import_person in", values, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonNotIn(List<String> values) {
+            addCriterion("import_person not in", values, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonBetween(String value1, String value2) {
+            addCriterion("import_person between", value1, value2, "importPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andImportPersonNotBetween(String value1, String value2) {
+            addCriterion("import_person not between", value1, value2, "importPerson");
             return (Criteria) this;
         }
 

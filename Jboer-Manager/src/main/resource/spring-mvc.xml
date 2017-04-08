@@ -64,5 +64,5 @@
     <task:annotation-driven executor="executor" scheduler="scheduler"/>
     
     <!-- 初始化数据区 -->
-	 <bean class="com.dcits.jb.manager.init.ThreadPoolInitListener"></bean> 
+	 <!-- <bean class="com.dcits.jb.manager.init.ThreadPoolInitListener"></bean>  -->
 </beans>
